@@ -62,6 +62,7 @@ function showUserInfo(event) {
     var thisUserObject = userListData[arrayPosition];
 
     //Populate Info Box
+    $('#userInfoId').text(thisUserObject.id);
     $('#userInfoName').text(thisUserObject.fullname);
     $('#userInfoAge').text(thisUserObject.age);
     $('#userInfoGender').text(thisUserObject.gender);
