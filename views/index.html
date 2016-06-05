@@ -3,5 +3,7 @@
 {% block title %}Remix{% endblock %}
 
 {% block content %}
-    <h1>{{ title }}</h1>
+    {% include "remix.html" %}
+    {% include "users.html" %}
+    {% include "info.html" %}
 {% endblock %}
