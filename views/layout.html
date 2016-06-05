@@ -3,13 +3,14 @@
   <head>
     <meta charset="utf-8">
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="/stylesheets/style.css" media="screen" title="no title" charset="utf-8" />
+    <link rel="stylesheet" href="/css/styles.min.css" media="screen" charset="utf-8" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="/javascripts/global.js"></script>
+    <script src="/js/global.js"></script>
   </head>
   <body>
     <div class="page-wrapper">
       {% block content %}{% endblock %}
+      {% include "users.html" %}
     </div>
     {% include "info.html" %}
   </body>

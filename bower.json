@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "fabric.js": "fabric#^1.6.2"
+    "fabric.js": "fabric#^1.6.2",
+    "sanitize-css": "^3.3.0"
   }
 }

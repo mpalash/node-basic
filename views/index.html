@@ -4,47 +4,4 @@
 
 {% block content %}
     <h1>{{ title }}</h1>
-    <div id="wrapper">
-      <div id="userInfo">
-        <p>
-          <span id='userInfoId'></span>
-          <span id='userInfoName'></span>
-          <span id='userInfoAge'></span>
-          <span id='userInfoGender'></span>
-          <span id='userInfoLocation'></span>
-        </p>
-      </div>
-      <div id="userList">
-        <table>
-          <thead>
-            <th>
-              User Name
-            </th>
-            <th>
-              Email
-            </th>
-            <th>
-              Delete?
-            </th>
-          </thead>
-          <tbody>
-
-          </tbody>
-        </table>
-      </div>
-      <div id="addUser">
-        <fieldset>
-          <input id="inputUserName" type="text" placeholder="Username">
-          <input id="inputUserEmail" type="text" placeholder="Email"><br>
-
-          <input id="inputUserFullname" type="text" placeholder="Full Name">
-          <input id="inputUserAge" type="text" placeholder="Age"><br>
-
-          <input id="inputUserLocation" type="text" placeholder="Location">
-          <input id="inputUserGender" type="text" placeholder="gender"><br>
-
-          <button id="btnAddUser">Add User</button>
-        </fieldset>
-      </div>
-    </div>
 {% endblock %}
