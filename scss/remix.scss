@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 $tool-background: #ccc;
 
 .remix-wrapper {
@@ -17,31 +19,135 @@ $tool-background: #ccc;
     width: 800px;
     height: 800px;
   }
+  input {
+    background-color: white;
+    padding: 0 5px;
+    margin: 0 0 5px 0;
+    width: 75%;
+    line-height: 30px;
+  }
+  button {
+    cursor: pointer;
+    padding: 0 5px;
+    margin: 0 0 5px -5px;
+    width: 25%;
+    font-size: 11px;
+    line-height: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-align: center;
+    background-color: darken($tool-background, 10%);
+    color: white;
+    transition: all 0.3s ease-out;
+    &:hover {
+      background-color: darken($tool-background, 20%);
+    }
+  }
+  #save-share {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    color: white;
+    &:hover {
+      background-color: $twblue;
+    }
+  }
 
   .tools {
     position: absolute;
-    top: 0;
+    top: 200px;
     left: 0;
   }
   .tool {
+    position: relative;
     background-color: $tool-background;
     font-size: 12px;
     margin: 10px;
-    padding: 10px;
+    padding: 25px 5px 5px 5px;
     max-width: 300px;
-    box-shadow: 2px 2px 0 2px rgba(black, 0.3);
 
-    input {
-      background-color: white;
+    .handle {
+      cursor: move;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
       padding: 5px;
+      font-size: 10px;
+      line-height: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
-    button {
-      background-color: darken($tool-background, 10%);
-      padding: 5px;
+    .colors {
+      margin-bottom: -5px;
     }
+
 
     li {
+      cursor: pointer;
       list-style: none;
+      display: inline-block;
+      position: relative;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      &:not(:last-child) {
+        margin: 0 1px 0 0;
+      }
+      &.font {
+        color: rgba(black, 0.5);
+        &.selected {
+          background-color: rgba(black, 0.25);
+          color: #CCC;
+        }
+        &:before {
+          content: 'A';
+          font-size: 20px;
+          line-height: 30px;
+          text-align: center;
+        }
+      }
+      &.object {
+        color: rgba(black, 0.5);
+        &.selected {
+          background-color: rgba(black, 0.25);
+          color: #CCC;
+        }
+        &:after {
+          font-size: 20px;
+          line-height: 30px;
+          text-align: center;
+        }
+        &[data-object="select"]:after {
+          content: '‡';
+        }
+        &[data-object="brush"]:after {
+          content: '•';
+        }
+        &[data-object="erase"]:after {
+          content: '×';
+        }
+      }
+      &[data-font="Helvetica"] {
+        font-family: "Helvetica";
+      }
+      &.color.selected:after {
+        content: '';
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        background-color: #CCC;
+      }
+      &[data-font="Georgia"] {
+        font-family: "Georgia";
+      }
+      &[data-font="Courier"] {
+        font-family: "Courier";
+      }
       &[data-color="#FFF"] {
         background-color: #FFF;
       }
@@ -60,6 +166,26 @@ $tool-background: #ccc;
       &[data-color="#D82"] {
         background-color: #D82;
       }
+    }
+  }
+  .ui-slider {
+    position: relative;
+    border: 1px solid black;
+    margin: 10px;
+    .ui-slider-handle {
+      cursor: pointer;
+      position: absolute;
+      top: -13px;
+      z-index: 2;
+      outline: 0 !important;
+      width: 25px;
+      height: 25px;
+      border-radius: 25px;
+      cursor: default;
+      touch-action: none;
+      background-color: #CCC;
+      border: 10px solid black;
+      transform: translateX(-12px);
     }
   }
 }

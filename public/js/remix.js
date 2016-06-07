@@ -3,6 +3,8 @@ $(document).ready(function() {
     backgroundColor: '#FFF'
   });
   var brush = canvas.freeDrawingBrush;
+  var initColor = '#FFF';
+  var initWidth = 50;
 
   var colorSwitcher = $('.tool.color-switcher');
   colorSwitcher.on('dataChanged', function(){
@@ -25,17 +27,16 @@ $(document).ready(function() {
   brushSizer.on('dataChanged', function(){
     var size = $(this).data('size');
     // console.log(size);
-    canvas.isDrawingMode = true;
     brush.width = size;
   });
 
   var textTyper = $('.tool.text-typer');
   textTyper.on('dataChanged', function(){
     canvas.isDrawingMode = false;
-    textVal = $(this).data('text');
-    textFont = $(this).data('font');
-    textSize = $(this).data('font-size');
-    textColor = $(this).data('color');
+    var textVal = $(this).data('text');
+    var textFont = $(this).data('font');
+    var textSize = $(this).data('font-size');
+    var textColor = $(this).data('color');
     // console.log(textVal, textFont, textSize, textColor);
     var txt = new fabric.Text(textVal, {
       top: 10,
@@ -49,55 +50,102 @@ $(document).ready(function() {
     canvas.add(txt);
   });
 
+  var objSelector = $('.tool.object-selector');
+  objSelector.on('dataChanged', function(){
+    var object = $(this).data('object');
+    if(object == 'select') {
+      canvas.isDrawingMode = false;
+    }
+    if(object == 'brush') {
+      canvas.isDrawingMode = true;
+    }
+    if(object == 'erase') {
+      canvas.isDrawingMode = false;
+      var obj = canvas.getActiveObject().remove();
+      if( obj != null ) {
+        canvas.getActiveObject().remove();
+      }
+    }
+  });
+
   canvas.isDrawingMode = true;
-  brush.color = '#F00';
-  brush.width = 25;
+  brush.color = initColor;
+  brush.width = initWidth;
 
   fabric.Image.fromURL('https://finna.fi/Cover/Show?id=muusa.urn%3Auuid%3AB5CED4DD-3202-4BDD-B7C1-EE4564A835E2&fullres=1&index=0&w=1200&h=1200', function(img) {
+    var iw = img.getWidth();
+    var ih = img.getHeight();
+    var cw = canvas.getWidth();
+    var ch = canvas.getHeight();
+    if(iw > ih) {
+      img.scaleToHeight(ch);
+    } else {
+      img.scaleToWidth(cw);
+    }
     canvas.add(img);
+    img.center();
     img.set('selectable', false);
   });
 
   // DELETE SELECTED
-  window.addEventListener("keydown", function(e){
-    if(e.keyCode === 8 || e.keyCode === 46 && document.activeElement === canvas) {
-      e.preventDefault();
-      canvas.getActiveObject().remove();
-    }
-  });
+  // FIXME: keypress only if canvas is active
+  // window.addEventListener("keydown", function(e){
+  //   console.log(document.activeElement);
+  //   if(e.keyCode === 8 || e.keyCode === 46 && document.activeElement === canvas) {
+  //     e.preventDefault();
+  //     canvas.getActiveObject().remove();
+  //   }
+  // });
 
   // COLOR
   $('li.color').on('click', function(){
     var color = $(this).data('color');
+    $('li.color').removeClass('selected');
+    $(this).addClass('selected');
     colorSwitcher.data('color', color).trigger('dataChanged');
     textTyper.data('color', color);
   });
 
   // BRUSH-SIZE
-  var sizer = document.getElementById('brush-sizer');
-  noUiSlider.create(sizer, {
-  	start: [20],
-  	range: {
-  		'min': 5,
-  		'max': 200
-  	}
+  var sizer = $('#brush-sizer').slider({
+    min: 10,
+    max: 200,
+    value: initWidth,
+    orientation: 'horizontal'
   });
-  sizer.noUiSlider.on('update', function(values, handle){
-    brushSizer.data('size', Math.round(values)).trigger('dataChanged');
+  sizer.on('slide', function(event, ui){
+    var value = Math.round(ui.value);
+    var borderWidth = (200 - value)/16 + 1;
+    $(this).find('.ui-slider-handle').css('border-width', borderWidth);
+    brushSizer.data('size', Math.round(value)).trigger('dataChanged');
   });
 
   // TEXT
   $('li.font').on('click', function(){
     var font = $(this).data('font');
+    $('li.font').removeClass('selected');
+    $(this).addClass('selected');
     textTyper.data('font', font);
   });
-  // $('li.font-size').on('click', function(){
-  //   var fontSize = $(this).data('font-size');
-  //   textTyper.data('font-size', fontSize);
-  // });
   $('button[name="text-add"]').on('click', function(){
     var text = $('input[name="text-value"]').val();
+    $('input[name="text-value"]').val('');
     textTyper.data('text', text).trigger('dataChanged');
+  });
+
+  // OBJECT TOOLS
+  $('li.object').on('click',function(){
+    var object = $(this).data('object');
+    $('li.object').removeClass('selected');
+    $(this).addClass('selected');
+    objSelector.data('object', object).trigger('dataChanged');
+  });
+
+  // DRAGGABLE
+  $('.remix-wrapper .tool').draggable({
+    handle: '.handle',
+    containment: '.remix-wrapper',
+    opacity: 0.7
   });
 
 });

@@ -18,6 +18,8 @@
   "dependencies": {
     "fabric.js": "fabric#^1.6.2",
     "sanitize-css": "^3.3.0",
-    "nouislider": "^8.5.1"
+    "nouislider": "^8.5.1",
+    "jquery": "^2.2.4",
+    "jquery-ui": "^1.11.4"
   }
 }

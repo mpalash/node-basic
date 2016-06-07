@@ -57,7 +57,13 @@ gulp.task('server', function() {
 
 gulp.task('js-depends', function() {
    gulp.src([
-         "bower_components/nouislider/distribute/nouislider.min.js",
+         "bower_components/jquery/dist/jquery.min.js",
+         "bower_components/jquery-ui/ui/minified/core.min.js",
+         "bower_components/jquery-ui/ui/minified/widget.min.js",
+         "bower_components/jquery-ui/ui/minified/mouse.min.js",
+         "bower_components/jquery-ui/ui/minified/position.min.js",
+         "bower_components/jquery-ui/ui/minified/draggable.min.js",
+         "bower_components/jquery-ui/ui/minified/slider.min.js",
          "bower_components/fabric.js/dist/fabric.min.js"
       ])
       .pipe(concat('js-depends.js'))
@@ -65,7 +71,6 @@ gulp.task('js-depends', function() {
 });
 gulp.task('css-depends', function() {
    gulp.src([
-         "bower_components/nouislider/distribute/nouislider.min.css"
       ])
       .pipe(concat('css-depends.min.css'))
       .pipe(gulp.dest("public/css/"))
