@@ -72,7 +72,7 @@ $(document).ready(function() {
   brush.color = initColor;
   brush.width = initWidth;
 
-  fabric.Image.fromURL('https://finna.fi/Cover/Show?id=muusa.urn%3Auuid%3AB5CED4DD-3202-4BDD-B7C1-EE4564A835E2&fullres=1&index=0&w=1200&h=1200', function(img) {
+  fabric.Image.fromURL('/stock/img-01.jpg', function(img) {
     var iw = img.getWidth();
     var ih = img.getHeight();
     var cw = canvas.getWidth();
@@ -85,7 +85,7 @@ $(document).ready(function() {
     canvas.add(img);
     img.center();
     img.set('selectable', false);
-  });
+  }, {crossOrigin: 'Anonymous'}, null);
 
   // COLOR
   $('li.color').on('click', function(){
@@ -124,11 +124,22 @@ $(document).ready(function() {
   });
 
   // OBJECT TOOLS
-  $('li.object').on('click',function(){
+  $('li.object').on('click', function(){
     var object = $(this).data('object');
     $('li.object').removeClass('selected');
     $(this).addClass('selected');
     objSelector.data('object', object).trigger('dataChanged');
+  });
+
+  // IMAGIFY
+  $('#save-share').on('click', function(){
+    canvas.deactivateAll().renderAll();
+    // var canvasPNG = canvas.toSVG();
+    var canvasPNG = new Image();
+    canvasPNG.setAttribute('crossOrigin', 'anonymous');
+    canvasPNG.src = canvas.toDataURL({
+      format: 'png'
+    });
   });
 
   // DRAGGABLE
