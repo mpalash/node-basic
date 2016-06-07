@@ -1,5 +1,7 @@
 $(document).ready(function() {
-  var canvas = new fabric.Canvas('remix-canvas');
+  var canvas = new fabric.Canvas('remix-canvas', {
+    backgroundColor: '#FFF'
+  });
   var brush = canvas.freeDrawingBrush;
 
   var colorSwitcher = $('.tool.color-switcher');
@@ -89,10 +91,10 @@ $(document).ready(function() {
     var font = $(this).data('font');
     textTyper.data('font', font);
   });
-  $('li.font-size').on('click', function(){
-    var fontSize = $(this).data('font-size');
-    textTyper.data('font-size', fontSize);
-  });
+  // $('li.font-size').on('click', function(){
+  //   var fontSize = $(this).data('font-size');
+  //   textTyper.data('font-size', fontSize);
+  // });
   $('button[name="text-add"]').on('click', function(){
     var text = $('input[name="text-value"]').val();
     textTyper.data('text', text).trigger('dataChanged');

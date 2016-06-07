@@ -1,0 +1,65 @@
+$tool-background: #ccc;
+
+.remix-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+
+  .fabric-wrapper {
+    width: 800px;
+    height: 800px;
+  }
+
+  .tools {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .tool {
+    background-color: $tool-background;
+    font-size: 12px;
+    margin: 10px;
+    padding: 10px;
+    max-width: 300px;
+    box-shadow: 2px 2px 0 2px rgba(black, 0.3);
+
+    input {
+      background-color: white;
+      padding: 5px;
+    }
+    button {
+      background-color: darken($tool-background, 10%);
+      padding: 5px;
+    }
+
+    li {
+      list-style: none;
+      &[data-color="#FFF"] {
+        background-color: #FFF;
+      }
+      &[data-color="#000"] {
+        background-color: #000;
+      }
+      &[data-color="#B22"] {
+        background-color: #B22;
+      }
+      &[data-color="#26B"] {
+        background-color: #26B;
+      }
+      &[data-color="#692"] {
+        background-color: #692;
+      }
+      &[data-color="#D82"] {
+        background-color: #D82;
+      }
+    }
+  }
+}

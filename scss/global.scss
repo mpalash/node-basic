@@ -1,6 +1,20 @@
 body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $background;
+  overflow: hidden;
+
   * {
-    outline: 1px solid #ccc;
+    // outline: 1px solid #ccc;
     box-sizing: border-box;
   }
+}
+.page-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }

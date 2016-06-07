@@ -1,39 +1,41 @@
 <div class="remix-wrapper">
-  <div class="tool controls">
-    <ul>
-      <li>Save and share</li>
-    </ul>
-  </div>
-  <div class="tool text-typer" data-text="" data-font="Helvetica" data-font-size="18" data-color="#B22">
-    <input type="text" name="text-value" placeholder="Type text here" value="">
-    <button type="button" name="text-add">Add</button>
-    <ul>
-      <li class="font" data-font="Helvetica">Sans</li>
-      <li class="font" data-font="Georgia">Serif</li>
-      <li class="font" data-font="Courier">Mono</li>
-    </ul>
-    <ul>
-      <li class="font-size" data-font-size="12">Small</li>
-      <li class="font-size" data-font-size="18">Normal</li>
-      <li class="font-size" data-font-size="36">Large</li>
-    </ul>
-  </div>
-  <div class="tool color-switcher" data-color="#B22">
-    <div class="color-vis"></div>
-    <ul>
-      <li class="color" data-color="#FFF">White</li>
-      <li class="color" data-color="#000">Black</li>
-      <li class="color" data-color="#B22">Red</li>
-      <li class="color" data-color="#26B">Blue</li>
-      <li class="color" data-color="#692">Green</li>
-      <li class="color" data-color="#D82">Orange</li>
-    </ul>
-  </div>
-  <div class="tool brush-sizer" data-size="20">
-    <div class="brush-size-vis"></div>
-    <div id="brush-sizer"></div>
-  </div>
   <div class="fabric-wrapper">
       <canvas id="remix-canvas" width="800" height="800"></canvas>
+  </div>
+  <div class="tools">
+    <div class="tool controls">
+      <ul>
+        <li><button type="button" name="save">Save and share</button></li>
+      </ul>
+    </div>
+    <div class="tool text-typer" data-text="" data-font="Helvetica" data-font-size="36" data-color="#B22">
+      <input type="text" name="text-value" placeholder="Type text here" value="">
+      <button type="button" name="text-add">Add</button>
+      <ul>
+        <li class="font" data-font="Helvetica">Sans</li>
+        <li class="font" data-font="Georgia">Serif</li>
+        <li class="font" data-font="Courier">Mono</li>
+      </ul>
+      <!-- <ul>
+        <li class="font-size" data-font-size="12">Small</li>
+        <li class="font-size" data-font-size="18">Normal</li>
+        <li class="font-size" data-font-size="36">Large</li>
+      </ul> -->
+    </div>
+    <div class="tool color-switcher" data-color="#B22">
+      <div class="color-vis"></div>
+      <ul>
+        <li class="color" data-color="#FFF">White</li>
+        <li class="color" data-color="#000">Black</li>
+        <li class="color" data-color="#B22">Red</li>
+        <li class="color" data-color="#26B">Blue</li>
+        <li class="color" data-color="#692">Green</li>
+        <li class="color" data-color="#D82">Orange</li>
+      </ul>
+    </div>
+    <div class="tool brush-sizer" data-size="20">
+      <div class="brush-size-vis"></div>
+      <div id="brush-sizer"></div>
+    </div>
   </div>
 </div>
