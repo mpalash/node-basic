@@ -4,13 +4,27 @@ $(document).ready(function() {
 
   var colorSwitcher = $('.tool.color-switcher');
   colorSwitcher.on('dataChanged', function(){
-    brush.color = $(this).data('color');
+    var color = $(this).data('color');
+    var obj = canvas.getActiveObject();
+    // console.log(obj, String(color));
+    brush.color = color;
+    if( obj != null ) {
+      if( obj.getFill() != null ) {
+        obj.set('fill', String(color));
+      }
+      if( obj.getStroke() != null ) {
+        obj.set('stroke', String(color));
+      }
+      canvas.renderAll();
+    }
   });
 
   var brushSizer = $('.tool.brush-sizer');
   brushSizer.on('dataChanged', function(){
+    var size = $(this).data('size');
+    // console.log(size);
     canvas.isDrawingMode = true;
-    brush.width = $(this).data('size');
+    brush.width = size;
   });
 
   var textTyper = $('.tool.text-typer');
@@ -20,7 +34,7 @@ $(document).ready(function() {
     textFont = $(this).data('font');
     textSize = $(this).data('font-size');
     textColor = $(this).data('color');
-    console.log(textVal, textFont, textSize, textColor);
+    // console.log(textVal, textFont, textSize, textColor);
     var txt = new fabric.Text(textVal, {
       top: 10,
       left: 10,
