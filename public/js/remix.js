@@ -61,7 +61,7 @@ $(document).ready(function() {
     }
     if(object == 'erase') {
       canvas.isDrawingMode = false;
-      var obj = canvas.getActiveObject().remove();
+      var obj = canvas.getActiveObject();
       if( obj != null ) {
         canvas.getActiveObject().remove();
       }
@@ -86,16 +86,6 @@ $(document).ready(function() {
     img.center();
     img.set('selectable', false);
   });
-
-  // DELETE SELECTED
-  // FIXME: keypress only if canvas is active
-  // window.addEventListener("keydown", function(e){
-  //   console.log(document.activeElement);
-  //   if(e.keyCode === 8 || e.keyCode === 46 && document.activeElement === canvas) {
-  //     e.preventDefault();
-  //     canvas.getActiveObject().remove();
-  //   }
-  // });
 
   // COLOR
   $('li.color').on('click', function(){
@@ -146,6 +136,16 @@ $(document).ready(function() {
     handle: '.handle',
     containment: '.remix-wrapper',
     opacity: 0.7
+  });
+
+  // PREVENT ACCIDENTAL NAVIGATION BACK
+  var rx = /INPUT|SELECT|TEXTAREA/i;
+  $(document).bind("keydown keypress", function(e){
+    if( e.which == 8 ){ // 8 == backspace
+      if(!rx.test(e.target.tagName) || e.target.disabled || e.target.readOnly ){
+        e.preventDefault();
+      }
+    }
   });
 
 });

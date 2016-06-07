@@ -21,6 +21,7 @@ $tool-background: #ccc;
   }
   input {
     background-color: white;
+    outline: none !important;
     padding: 0 5px;
     margin: 0 0 5px 0;
     width: 75%;
@@ -28,6 +29,7 @@ $tool-background: #ccc;
   }
   button {
     cursor: pointer;
+    outline: none !important;
     padding: 0 5px;
     margin: 0 0 5px -5px;
     width: 25%;
