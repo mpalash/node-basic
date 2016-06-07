@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "fabric.js": "fabric#^1.6.2",
-    "sanitize-css": "^3.3.0"
+    "sanitize-css": "^3.3.0",
+    "nouislider": "^8.5.1"
   }
 }

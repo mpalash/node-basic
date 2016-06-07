@@ -55,15 +55,21 @@ gulp.task('server', function() {
    });
 });
 
-// gulp.task('dev-frontend-libs', function() {
-//    gulp.src([
-//          "build/bower_components/jquery/dist/jquery.min.js",
-//          "build/bower_components/lodash/dist/lodash.min.js",
-//          "src/frontend-libs/**/*.js"
-//       ])
-//       .pipe(concat('dependencies.js'))
-//       .pipe(gulp.dest("public/js/"))
-// });
+gulp.task('js-depends', function() {
+   gulp.src([
+         "bower_components/nouislider/distribute/nouislider.min.js",
+         "bower_components/fabric.js/dist/fabric.min.js"
+      ])
+      .pipe(concat('js-depends.js'))
+      .pipe(gulp.dest("public/js/"))
+});
+gulp.task('css-depends', function() {
+   gulp.src([
+         "bower_components/nouislider/distribute/nouislider.min.css"
+      ])
+      .pipe(concat('css-depends.min.css'))
+      .pipe(gulp.dest("public/css/"))
+});
 
 gulp.task('start', function() {
    runSequence('sass', function() {
