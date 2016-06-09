@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    
+
     <title>{{ title }}</title>
 
     <link rel="stylesheet" href="/css/styles.min.css" media="screen" charset="utf-8" />
 
     <script src="/js/js-depends.js"></script>
+    <script src="/js/remix-db.js"></script>
     <script src="/js/remix.js"></script>
     <script src="/js/global.js"></script>
   </head>
@@ -16,7 +17,7 @@
     <div class="nav-wrapper">
       <h1>{{ title }}</h1>
       <ul>
-        <li>Info</li>
+        <li class="{{ infoActive }}"><a href="/info">Info</a></li>
       </ul>
     </div>
     <div class="page-wrapper">

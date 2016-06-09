@@ -6,6 +6,29 @@ $(document).ready(function() {
   var initColor = '#FFF';
   var initWidth = 50;
 
+  canvas.isDrawingMode = true;
+  brush.color = initColor;
+  brush.width = initWidth;
+
+  var remixSrc = '/stock/img-01.jpg';
+  var imgBg = fabric.Image.fromURL(remixSrc, function(img) {
+    var iw = img.getWidth();
+    var ih = img.getHeight();
+    var cw = canvas.getWidth();
+    var ch = canvas.getHeight();
+    if(iw > ih) {
+      // img.scaleToHeight(ch);
+      img.scaleToHeight(750);
+    } else {
+      // img.scaleToWidth(cw);
+      img.scaleToWidth(750);
+    }
+    canvas.add(img);
+    img.center();
+    img.lockUniScaling(true);
+    // img.set('selectable', false);
+  }, {crossOrigin: 'Anonymous'}, null);
+
   var colorSwitcher = $('.tool.color-switcher');
   colorSwitcher.on('dataChanged', function(){
     var color = $(this).data('color');
@@ -55,6 +78,8 @@ $(document).ready(function() {
     var object = $(this).data('object');
     if(object == 'select') {
       canvas.isDrawingMode = false;
+      // console.log(canvas.getActiveObject());
+      // console.log(canvas.getActiveObject().get('__uid'));
     }
     if(object == 'brush') {
       canvas.isDrawingMode = true;
@@ -62,30 +87,11 @@ $(document).ready(function() {
     if(object == 'erase') {
       canvas.isDrawingMode = false;
       var obj = canvas.getActiveObject();
-      if( obj != null ) {
+      if( obj != null && !obj.isType('image')) {
         canvas.getActiveObject().remove();
       }
     }
   });
-
-  canvas.isDrawingMode = true;
-  brush.color = initColor;
-  brush.width = initWidth;
-
-  fabric.Image.fromURL('/stock/img-01.jpg', function(img) {
-    var iw = img.getWidth();
-    var ih = img.getHeight();
-    var cw = canvas.getWidth();
-    var ch = canvas.getHeight();
-    if(iw > ih) {
-      img.scaleToHeight(ch);
-    } else {
-      img.scaleToWidth(cw);
-    }
-    canvas.add(img);
-    img.center();
-    img.set('selectable', false);
-  }, {crossOrigin: 'Anonymous'}, null);
 
   // COLOR
   $('li.color').on('click', function(){
@@ -126,8 +132,10 @@ $(document).ready(function() {
   // OBJECT TOOLS
   $('li.object').on('click', function(){
     var object = $(this).data('object');
-    $('li.object').removeClass('selected');
-    $(this).addClass('selected');
+    if( object != 'erase' ){
+      $('li.object').removeClass('selected');
+      $(this).addClass('selected');
+    }
     objSelector.data('object', object).trigger('dataChanged');
   });
 
@@ -135,11 +143,15 @@ $(document).ready(function() {
   $('#save-share').on('click', function(){
     canvas.deactivateAll().renderAll();
     // var canvasPNG = canvas.toSVG();
+    var date = new Date();
+    date.getTime();
     var canvasPNG = new Image();
     canvasPNG.setAttribute('crossOrigin', 'anonymous');
     canvasPNG.src = canvas.toDataURL({
       format: 'png'
     });
+    var fileSrc = remixSrc.split('/').slice(-1)[0];
+    addRemix(event, canvasPNG.src, fileSrc, date);
   });
 
   // DRAGGABLE

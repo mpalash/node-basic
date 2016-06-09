@@ -60,14 +60,22 @@ $tool-background: #ccc;
     position: absolute;
     top: 200px;
     left: 0;
+    *:not(input) {
+      user-select: none;
+    }
   }
   .tool {
     position: relative;
-    background-color: $tool-background;
+    background-color: transparent;
     font-size: 12px;
     margin: 10px;
     padding: 25px 5px 5px 5px;
     max-width: 300px;
+    transform: translate3d(0,0,0);
+    transition: all 0.2s ease-out;
+    &:hover {
+      background-color: darken($background, 5%);
+    }
 
     .handle {
       cursor: move;
@@ -122,7 +130,7 @@ $tool-background: #ccc;
           text-align: center;
         }
         &[data-object="select"]:after {
-          content: '‡';
+          content: '+'; // '‡';
         }
         &[data-object="brush"]:after {
           content: '•';
