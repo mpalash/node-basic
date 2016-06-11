@@ -1,4 +1,22 @@
+// FIXME: Put files and array into backend.
+
 $(document).ready(function() {
+  var filesDir = '/stock/'
+  var files = [
+    'HKMS000005 000001od.jpg',
+    'HKMS000005 00000u5w.jpg',
+    'HKMS000005 km0000lr66.jpg',
+    'HKMS000005 km0000nz9u.jpg',
+    'HKMS000005 0000053m.jpg',
+    'HKMS000005 km0000lgws.jpg',
+    'HKMS000005 km0000mv9d.jpg',
+    'HKMS000005 km003871.jpg',
+    'HKMS000005 0000085p.jpg',
+    'HKMS000005 km0000lkry.jpg',
+    'HKMS000005 km0000mv9j.jpg',
+    'HKMS000005 km003lkp.jpg'
+  ]
+
   var canvas = new fabric.Canvas('remix-canvas', {
     backgroundColor: '#FFF'
   });
@@ -10,22 +28,23 @@ $(document).ready(function() {
   brush.color = initColor;
   brush.width = initWidth;
 
-  var remixSrc = '/stock/img-01.jpg';
+  var remixSrc = filesDir + files[Math.floor(Math.random()*(files.length))];
   var imgBg = fabric.Image.fromURL(remixSrc, function(img) {
     var iw = img.getWidth();
     var ih = img.getHeight();
     var cw = canvas.getWidth();
     var ch = canvas.getHeight();
+    console.log(iw, ih);
     if(iw > ih) {
       // img.scaleToHeight(ch);
-      img.scaleToHeight(750);
+      img.scaleToWidth(750);
     } else {
       // img.scaleToWidth(cw);
-      img.scaleToWidth(750);
+      img.scaleToHeight(750);
     }
     canvas.add(img);
     img.center();
-    img.lockUniScaling(true);
+    img.set('lockUniScaling', true);
     // img.set('selectable', false);
   }, {crossOrigin: 'Anonymous'}, null);
 

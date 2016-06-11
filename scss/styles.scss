@@ -1,11 +1,11 @@
-@import "../bower_components/sanitize-css/lib/sanitize.scss",
-        "../bower_components/nouislider/distribute/nouislider.min.css";
+@import "../bower_components/sanitize-css/lib/sanitize.scss";
 
 @import "variables",
         "fonts",
         "typography",
         "global",
-        "remix";
+        "remix",
+        "remix-skin";
 
 .nav-wrapper {
   position: fixed;
@@ -31,9 +31,9 @@
       line-height: 30px;
       text-transform: lowercase;
       letter-spacing: 0.05em;
-      &:before {
-        content: '/ ';
-      }
+      // &:before {
+      //   content: '/ ';
+      // }
     }
   }
 }

@@ -68,9 +68,9 @@ $tool-background: #ccc;
     position: relative;
     background-color: transparent;
     font-size: 12px;
-    margin: 10px;
+    margin: 10px 0;
     padding: 25px 5px 5px 5px;
-    max-width: 300px;
+    max-width: 200px;
     transform: translate3d(0,0,0);
     transition: all 0.2s ease-out;
     &:hover {
@@ -164,17 +164,23 @@ $tool-background: #ccc;
       &[data-color="#000"] {
         background-color: #000;
       }
-      &[data-color="#B22"] {
-        background-color: #B22;
+      &[data-color="#FC173B"] {
+        background-color: #FC173B;
       }
-      &[data-color="#26B"] {
-        background-color: #26B;
+      &[data-color="#3ECDFC"] {
+        background-color: #3ECDFC;
       }
-      &[data-color="#692"] {
-        background-color: #692;
+      &[data-color="#FECB6E"] {
+        background-color: #FECB6E;
       }
-      &[data-color="#D82"] {
-        background-color: #D82;
+      &[data-color="#663FFB"] {
+        background-color: #663FFB;
+      }
+      &[data-color="#FDCDFD"] {
+        background-color: #FDCDFD;
+      }
+      &[data-color="#6DFD6E"] {
+        background-color: #6DFD6E;
       }
     }
   }
