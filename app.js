@@ -72,7 +72,7 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-var server = app.listen(process.env.PORT * 1 || 3011, function() {
+var server = app.listen(process.env.PORT * 1 || 8080, function() {
 
 	var host = server.address().address;
 	var port = server.address().port;
