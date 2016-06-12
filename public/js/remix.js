@@ -29,7 +29,7 @@ $(document).ready(function() {
     backgroundColor: '#FFF'
   });
   var brush = canvas.freeDrawingBrush;
-  var initColor = '#FFF';
+  var initColor = '#FC173B';
   var initWidth = 50;
 
   canvas.isDrawingMode = true;
@@ -84,14 +84,14 @@ $(document).ready(function() {
   textTyper.on('dataChanged', function(){
     canvas.isDrawingMode = false;
     var textVal = $(this).data('text');
-    var textFont = $(this).data('font');
+    var textFont = 'Poppins';
     var textSize = $(this).data('font-size');
     var textColor = $(this).data('color');
     // console.log(textVal, textFont, textSize, textColor);
     var txt = new fabric.Text(textVal, {
       top: 10,
       left: 10,
-      fontWeight: 'normal',
+      fontWeight: 'bold',
       fontFamily: textFont,
       fontSize: textSize,
       fill: textColor,
@@ -144,12 +144,12 @@ $(document).ready(function() {
   });
 
   // TEXT
-  $('li.font').on('click', function(){
-    var font = $(this).data('font');
-    $('li.font').removeClass('selected');
-    $(this).addClass('selected');
-    textTyper.data('font', font);
-  });
+  // $('li.font').on('click', function(){
+  //   var font = $(this).data('font');
+  //   $('li.font').removeClass('selected');
+  //   $(this).addClass('selected');
+  //   textTyper.data('font', font);
+  // });
   $('button[name="text-add"]').on('click', function(){
     var text = $('input[name="text-value"]').val();
     $('input[name="text-value"]').val('');
@@ -172,13 +172,33 @@ $(document).ready(function() {
     // var canvasPNG = canvas.toSVG();
     var date = new Date();
     date.getTime();
-    var canvasPNG = new Image();
-    canvasPNG.setAttribute('crossOrigin', 'anonymous');
-    canvasPNG.src = canvas.toDataURL({
-      format: 'png'
-    });
-    var fileSrc = remixSrc.split('/').slice(-1)[0];
-    addRemix(event, canvasPNG.src, fileSrc, date);
+    var name = $('#save-name').val();
+    var email = $('#save-email').val();
+    if(isEmail(email) && name != '') {
+      var canvasPNG = new Image();
+      canvasPNG.setAttribute('crossOrigin', 'anonymous');
+      canvasPNG.src = canvas.toDataURL({
+        format: 'png'
+      });
+      thumbJPG.src = canvas.toDataURL({
+        format: 'jpg',
+        quality: 0.9,
+        multiplier: 0.5
+      });
+      var fileSrc = remixSrc.split('/').slice(-1)[0];
+      var newRemix = {
+        'fullname': name,
+        'email': email,
+        'thumb': thumbJPG.src,
+        'remix': canvasPNG.src,
+        'remixsrc': fileSrc,
+        'date': date
+      }
+      addRemix(event, newRemix);
+    } else {
+      $('#save-share + .error').show();
+    }
+
   });
 
   // DRAGGABLE
@@ -199,3 +219,8 @@ $(document).ready(function() {
   });
 
 });
+
+function isEmail(email) {
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  return regex.test(email);
+}

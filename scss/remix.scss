@@ -22,18 +22,18 @@ $tool-background: #ccc;
   }
   input {
     background-color: white;
-    outline: none !important;
+    outline: 1px solid darken($tool-background, 10%);
+    outline-offset: -1px;
     padding: 0 5px;
-    margin: 0 0 5px 0;
-    width: 75%;
+    margin: 0 0 10px 0;
     line-height: 30px;
+    width: 100%;
   }
   button {
     cursor: pointer;
     outline: none !important;
     padding: 0 5px;
-    margin: 0 0 5px -5px;
-    width: 25%;
+    margin: 0 0 10px 0;
     font-size: 11px;
     line-height: 30px;
     text-transform: uppercase;
@@ -50,7 +50,6 @@ $tool-background: #ccc;
   #save-share {
     display: block;
     width: 100%;
-    margin: 10px 0;
     color: white;
     &:hover {
       background-color: $twblue;
@@ -71,7 +70,7 @@ $tool-background: #ccc;
     font-size: 12px;
     margin: 10px 0;
     padding: 25px 5px 5px 5px;
-    max-width: 200px;
+    max-width: 220px;
     transform: translate3d(0,0,0);
     transition: all 0.2s ease-out;
     &:hover {
@@ -90,11 +89,24 @@ $tool-background: #ccc;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
+    .error {
+      display: none;
+      font-size: 10px;
+      color: red;
+    }
+    &.text-typer {
+      input {
+        width: 75%;
+        margin: 0;
+      }
+      button {
+        width: 25%;
+        margin: 0 0 0 -5px;
+      }
+    }
     .colors {
       margin-bottom: -5px;
     }
-
-
     li {
       cursor: pointer;
       list-style: none;

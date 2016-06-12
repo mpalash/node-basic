@@ -3,30 +3,23 @@
       <canvas id="remix-canvas" width="800" height="800"></canvas>
   </div>
   <div class="tools">
-    <div class="tool text-typer" data-text="" data-font="Helvetica" data-font-size="36" data-color="#FFF">
+    <div class="tool text-typer" data-text="" data-font="Helvetica" data-font-size="36" data-color="#FC173B">
       <div class="handle">
         <span>Add text</span>
       </div>
       <input type="text" name="text-value" placeholder="Type text here" value="">
       <button type="button" name="text-add">Add</button>
-      <ul class="fonts">
-        <li class="font selected" data-font="Helvetica"></li>
-        <li class="font" data-font="Georgia"></li>
-        <li class="font" data-font="Courier"></li>
-      </ul>
     </div>
-    <div class="tool color-switcher" data-color="#FFF">
+    <div class="tool color-switcher" data-color="#FC173B">
       <div class="handle">
         <span>Pick color</span>
       </div>
       <ul class="colors">
-        <li class="color selected" data-color="#FFF"></li>
+        <li class="color" data-color="#FFF"></li>
         <li class="color" data-color="#000"></li>
-        <li class="color" data-color="#FC173B"></li>
-        <li class="color" data-color="#3ECDFC"></li>
-        <li class="color" data-color="#FECB6E"></li>
+        <li class="color selected" data-color="#FC173B"></li>
         <li class="color" data-color="#663FFB"></li>
-        <li class="color" data-color="#FDCDFD"></li>
+        <li class="color" data-color="#FECB6E"></li>
         <li class="color" data-color="#6DFD6E"></li>
       </ul>
     </div>
@@ -47,6 +40,14 @@
         <li class="object" data-object="erase"></li>
       </ul>
     </div>
-    <button id="save-share" type="button" name="save">Save and share</button>
+    <div class="tool remix-saver">
+      <div class="handle">
+        <span>Fill this out</span>
+      </div>
+      <input id="save-name" type="text" name="name" value="" placeholder="Name">
+      <input id="save-email" type="email" name="email" value="" placeholder="Email">
+      <button id="save-share" type="button" name="save">Save and share</button>
+      <p class="error">Please fill in your name and a valid email</p>
+    </div>
   </div>
 </div>

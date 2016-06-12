@@ -67,7 +67,7 @@
 // };
 
 // Add User
-function addRemix(event, remix, remixSrc, date) {
+function addRemix(event, remix) {
     event.preventDefault();
 
     // Super basic validation - increase errorCount variable if any fields are blank
@@ -77,14 +77,15 @@ function addRemix(event, remix, remixSrc, date) {
     // });
 
     // Check and make sure errorCount's still at zero
-    var newRemix = {
-      'username': 'admin',
-      'email': 'admin@remix.com',
-      'fullname': 'Name',
-      'remix': remix,
-      'remixsrc': remixSrc,
-      'date': date
-    }
+    // var newRemix = {
+    //   'username': 'admin',
+    //   'email': 'admin@remix.com',
+    //   'fullname': 'Name',
+    //   'remix': remix,
+    //   'remixsrc': remixSrc,
+    //   'date': date
+    // }
+    var newRemix = remix;
     console.log(newRemix);
     $.ajax({
         type: 'POST',
