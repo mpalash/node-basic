@@ -1,24 +1,26 @@
 var express = require('express');
 var router = express.Router();
 
+var title = 'remix party wip';
+
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', {
-    title: 're:mix party wip',
+    title: title,
     infoActive: ''
   });
 });
 
 router.get('/info', function(req, res) {
   res.render('index', {
-    title: 're:mix party wip',
+    title: title,
     infoActive: 'active'
   });
 });
 
 router.get('/remixes', function(req, res) {
   res.render('remixes', {
-    title: 're:mix party wip'
+    title: title
   });
 });
 
