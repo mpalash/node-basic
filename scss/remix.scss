@@ -95,7 +95,7 @@ $tool-background: #ccc;
     .error {
       display: none;
       font-size: 10px;
-      color: red;
+      color: $red;
     }
     &.text-typer {
       input {
