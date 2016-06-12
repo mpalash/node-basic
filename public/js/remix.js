@@ -176,6 +176,7 @@ $(document).ready(function() {
     var email = $('#save-email').val();
     if(isEmail(email) && name != '') {
       var canvasPNG = new Image();
+      var thumbJPG = new Image();
       canvasPNG.setAttribute('crossOrigin', 'anonymous');
       canvasPNG.src = canvas.toDataURL({
         format: 'png'
@@ -195,6 +196,9 @@ $(document).ready(function() {
         'date': date
       }
       addRemix(event, newRemix);
+      $('#save-name').val('');
+      $('#save-email').val('');
+      $('#save-share + .error').hide();
     } else {
       $('#save-share + .error').show();
     }

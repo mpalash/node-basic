@@ -66,25 +66,9 @@
 //
 // };
 
-// Add User
+// Add Remix
 function addRemix(event, remix) {
     event.preventDefault();
-
-    // Super basic validation - increase errorCount variable if any fields are blank
-    // var errorCount = 0;
-    // $('#addUser input').each(function(index, val) {
-    //     if($(this).val() === '') { errorCount++; }
-    // });
-
-    // Check and make sure errorCount's still at zero
-    // var newRemix = {
-    //   'username': 'admin',
-    //   'email': 'admin@remix.com',
-    //   'fullname': 'Name',
-    //   'remix': remix,
-    //   'remixsrc': remixSrc,
-    //   'date': date
-    // }
     var newRemix = remix;
     console.log(newRemix);
     $.ajax({
@@ -97,7 +81,7 @@ function addRemix(event, remix) {
           console.log('Stored');
         }
         else {
-          alert('Error: ' + response.msg);
+          console.log(response.msg);
         }
     });
 };
