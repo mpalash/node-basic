@@ -4,8 +4,6 @@
 // Description below Image
 // Start remix -> tools
 // Tools: DRAW, ADD TEXT (POPPINS), MOVE / RESIZE, ADD IMAGE, SHARE, UNDO?, ERASE
-// Save: PNG, SVG, thumbnail PNG/JPG
-
 
 
 $(document).ready(function() {
