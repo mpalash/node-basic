@@ -16,4 +16,10 @@ router.get('/info', function(req, res) {
   });
 });
 
+router.get('/remixes', function(req, res) {
+  res.render('remixes', {
+    title: 're:mix party wip'
+  });
+});
+
 module.exports = router;
