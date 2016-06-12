@@ -169,15 +169,17 @@ $(document).ready(function() {
   // IMAGIFY
   $('#save-share').on('click', function(){
     canvas.deactivateAll().renderAll();
-    // var canvasPNG = canvas.toSVG();
+    var canvasSVG;
+    var canvasPNG = new Image();
+    var thumbJPG = new Image();
+    canvasPNG.setAttribute('crossOrigin', 'anonymous');
+    thumbJPG.setAttribute('crossOrigin', 'anonymous');
     var date = new Date();
     date.getTime();
     var name = $('#save-name').val();
     var email = $('#save-email').val();
     if(isEmail(email) && name != '') {
-      var canvasPNG = new Image();
-      var thumbJPG = new Image();
-      canvasPNG.setAttribute('crossOrigin', 'anonymous');
+      canvasSVG = canvas.toSVG();
       canvasPNG.src = canvas.toDataURL({
         format: 'png'
       });
@@ -192,6 +194,7 @@ $(document).ready(function() {
         'email': email,
         'thumb': thumbJPG.src,
         'remix': canvasPNG.src,
+        'remixsvg': canvasSVG,
         'remixsrc': fileSrc,
         'date': date
       }
