@@ -20,6 +20,13 @@ $tool-background: #ccc;
     height: 800px;
     box-shadow: 0 0 0 1px #eee;
   }
+  .description {
+    margin: 10px;
+    text-align: center;
+    a {
+      font-weight: bold;
+    }
+  }
   input {
     background-color: white;
     outline: 1px solid darken($tool-background, 10%);
@@ -61,7 +68,7 @@ $tool-background: #ccc;
     top: 200px;
     left: 0;
     transform-origin: top left;
-    transform: scale(1.25);
+    // transform: scale(1.25);
     *:not(input) {
       user-select: none;
     }

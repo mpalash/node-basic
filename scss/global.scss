@@ -11,6 +11,17 @@ body {
     box-sizing: border-box;
   }
 }
+a {
+  color: $violet;
+  &:hover,
+  &:active {
+    text-decoration: underline;
+  }
+  &:link,
+  &:visited {
+    color: $violet;
+  }
+}
 .page-wrapper {
   position: fixed;
   top: 0;
