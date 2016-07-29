@@ -86,7 +86,7 @@ gulp.task('start', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['scss/*.scss'], function() {
-     runSequence('sass')
+  gulp.watch(['scss/*.scss','sketch/*.sketch'], function() {
+     runSequence('icons','sass')
   });
 });

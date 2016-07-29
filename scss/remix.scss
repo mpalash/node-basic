@@ -142,24 +142,30 @@ $tool-background: #ccc;
         }
       }
       &.object {
+        position: relative;
         color: rgba(black, 0.5);
         &.selected {
-          background-color: rgba(black, 0.25);
+          background-color: rgba(black, 0.15);
           color: #CCC;
         }
         &:after {
-          font-size: 20px;
-          line-height: 30px;
-          text-align: center;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
         }
         &[data-object="select"]:after {
-          content: '+'; // '‡';
+          content: '';
+          background: url(svg/tool_select.svg) no-repeat 50% 50% / 80% 80%;
         }
         &[data-object="brush"]:after {
-          content: '•';
+          content: '';
+          background: url(svg/tool_brush.svg) no-repeat 50% 50% / 80% 80%;
         }
         &[data-object="erase"]:after {
-          content: '×';
+          content: '';
+          background: url(svg/tool_trash.svg) no-repeat 50% 50% / 80% 80%;
         }
       }
       &[data-font="Helvetica"] {

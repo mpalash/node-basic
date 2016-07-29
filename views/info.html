@@ -1,6 +1,10 @@
-<div class="overlay-wrapper info {{ infoActive }}">
-  <div class="overlay-content">
-    <h1>Info</h1>
-    <p>Info about the project.</p>
-  </div>
-</div>
+{% extends 'layout.html' %}
+
+{% block title %}Remix{% endblock %}
+
+{% block content %}
+  <h1>Info</h1>
+  <p>Remix Party is a work-in-progress project and temporary environment that looks into remix practices as a way to engage with cultural heritage in the digital age.</p>
+  <p>Follow<br><a href="https://twitter.com/remixpartywip">@remixpartywip</a></p>
+  <p>Contact<br><a href="mailto:remixpartywip@gmail.com">remixpartywip@gmail.com</a></p>
+{% endblock %}
