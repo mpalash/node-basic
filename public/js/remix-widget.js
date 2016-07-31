@@ -7,35 +7,72 @@
 
 
 $(document).ready(function() {
-  var filesDir = '/stock/'
-  var files = [
-    'HKMS000005 000001od.jpg',
-    'HKMS000005 00000u5w.jpg',
-    'HKMS000005 km0000lr66.jpg',
-    'HKMS000005 km0000nz9u.jpg',
-    'HKMS000005 0000053m.jpg',
-    'HKMS000005 km0000lgws.jpg',
-    'HKMS000005 km0000mv9d.jpg',
-    'HKMS000005 km003871.jpg',
-    'HKMS000005 0000085p.jpg',
-    'HKMS000005 km0000lkry.jpg',
-    'HKMS000005 km0000mv9j.jpg',
-    'HKMS000005 km003lkp.jpg'
-  ];
-  var txt = [
-    '<a href="https://www.finna.fi/Record/hkm.HKMS000005:000001od#image" target="_blank">Foreign guests on the rollercoaster in Linnanmäki</a><br>Helsinki Olympic Games 1952, Photograph by Volker von Bonin, Helsinki City Museum',
-    '<a href="https://www.finna.fi/Record/hkm.HKMS000005:00000u5w#image" target="_blank">Pre-Christmas festivities at Tuko</a><br>Unknown photographer 1960-1069, Helsinki City Museum',
-    '<a href="https://www.finna.fi/Record/hkm.HKMS000005:km0000lr66#image" target="_blank">Group of men probably celebrating May Day</a><br>Unknown photographer 1910-19, Helsinki City Museum',
-    '<a href="https://www.finna.fi/Record/hkm.HKMS000005:km0000nz9u#image" target="_blank">Karhupuisto 1970</a><br>Photograph by Rista Simo SER, Helsinki City Museum',
-    '<a href="https://www.finna.fi/Record/hkm.HKMS000005:0000053m#image" target="_blank">Linnanmäki amusement park 1968</a><br>Photograph by Volker von Bonin, Helsinki City Museum',
-    '<a href="https://www.finna.fi/Record/hkm.HKMS000005:km0000lgws#image" target="_blank">May Day celebration</a><br>Unknown photographer 1970-1079, Helsinki City Museum',
-    '<a href="https://www.finna.fi/Record/hkm.HKMS000005:km0000mv9d#image" target="_blank">Housewarming at Allotrian house</a><br>Unknown photographer 1954, Helsinki City Museum',
-    '<a href="https://www.finna.fi/Record/hkm.HKMS000005:km003871#image" target="_blank">School of Lauttasaari</a><br>Unknown photographer 1957, Helsinki City Museum',
-    '<a href="https://www.finna.fi/Record/hkm.HKMS000005:0000085p#image" target="_blank">Masquerade at the Helsinki University Student Union Hall “Poli”</a><br>Photograph by Harald Rosenberg 1920-29, Helsinki City Museum',
-    '<a href="https://www.finna.fi/Record/hkm.HKMS000005:km0000lkry#image" target="_blank">Celebrations at home 1950-1959</a><br>Photograph by Kannisto Väinö, Helsinki City Museum',
-    '<a href="https://www.finna.fi/Record/hkm.HKMS000005:km0000mv9j#image" target="_blank">Housewarming at Allotrian house</a><br>Unknown photographer 1954, Helsinki City Museum',
-    '<a href="https://www.finna.fi/Record/hkm.HKMS000005:km003lkp#image" target="_blank">Boy playing ping pong</a><br>Elanto photo collection, Unknown photographer 1950-1059, Helsinki City Museum'
-  ];
+  var filesDir = '/stock/';
+  var filesObj = {
+    files : [
+      {
+          filename: 'HKMS000005 000001od.jpg',
+          srcurl: 'https://www.finna.fi/Record/hkm.HKMS000005:000001od#image',
+          title: 'Foreign guests on the rollercoaster in Linnanmäki',
+          meta: 'Helsinki Olympic Games 1952, Photograph by Volker von Bonin, Helsinki City Museum'
+      }, {
+          filename: 'HKMS000005 00000u5w.jpg',
+          srcurl: 'https://www.finna.fi/Record/hkm.HKMS000005:00000u5w#image',
+          title: 'Pre-Christmas festivities at Tuko',
+          meta: 'Unknown photographer 1960-1069, Helsinki City Museum'
+      }, {
+          filename: 'HKMS000005 km0000lr66.jpg',
+          srcurl: 'https://www.finna.fi/Record/hkm.HKMS000005:km0000lr66#image',
+          title: 'Group of men probably celebrating May Day',
+          meta: 'Unknown photographer 1910-19, Helsinki City Museum'
+      }, {
+          filename: 'HKMS000005 km0000nz9u.jpg',
+          srcurl: 'https://www.finna.fi/Record/hkm.HKMS000005:km0000nz9u#image',
+          title: 'Karhupuisto 1970',
+          meta: 'Photograph by Rista Simo SER, Helsinki City Museum'
+      }, {
+          filename: 'HKMS000005 0000053m.jpg',
+          srcurl: 'https://www.finna.fi/Record/hkm.HKMS000005:0000053m#image',
+          title: 'Linnanmäki amusement park 1968',
+          meta: 'Photograph by Volker von Bonin, Helsinki City Museum'
+      }, {
+          filename: 'HKMS000005 km0000lgws.jpg',
+          srcurl: 'https://www.finna.fi/Record/hkm.HKMS000005:km0000lgws#image',
+          title: 'May Day celebration',
+          meta: 'Unknown photographer 1970-1079, Helsinki City Museum'
+      }, {
+          filename: 'HKMS000005 km0000mv9d.jpg',
+          srcurl: 'https://www.finna.fi/Record/hkm.HKMS000005:km0000mv9d#image',
+          title: 'Housewarming at Allotrian house',
+          meta: 'Unknown photographer 1954, Helsinki City Museum'
+      }, {
+          filename: 'HKMS000005 km003871.jpg',
+          srcurl: 'https://www.finna.fi/Record/hkm.HKMS000005:km003871#image',
+          title: 'School of Lauttasaari',
+          meta: 'Unknown photographer 1957, Helsinki City Museum'
+      }, {
+          filename: 'HKMS000005 0000085p.jpg',
+          srcurl: 'https://www.finna.fi/Record/hkm.HKMS000005:0000085p#image',
+          title: 'Masquerade at the Helsinki University Student Union Hall “Poli”',
+          meta: 'Photograph by Harald Rosenberg 1920-29, Helsinki City Museum'
+      }, {
+          filename: 'HKMS000005 km0000lkry.jpg',
+          srcurl: 'https://www.finna.fi/Record/hkm.HKMS000005:km0000lkry#image',
+          title: 'Celebrations at home 1950-1959',
+          meta: 'Photograph by Kannisto Väinö, Helsinki City Museum'
+      }, {
+          filename: 'HKMS000005 km0000mv9j.jpg',
+          srcurl: 'https://www.finna.fi/Record/hkm.HKMS000005:km0000mv9j#image',
+          title: 'Housewarming at Allotrian house',
+          meta: 'Unknown photographer 1954, Helsinki City Museum'
+      }, {
+          filename: 'HKMS000005 km003lkp.jpg',
+          srcurl: 'https://www.finna.fi/Record/hkm.HKMS000005:km003lkp#image',
+          title: 'Boy playing ping pong',
+          meta: 'Elanto photo collection, Unknown photographer 1950-1059, Helsinki City Museum'
+      }
+    ]
+  };
 
   var canvas = new fabric.Canvas('remix-canvas', {
     backgroundColor: '#FFF'
@@ -50,8 +87,9 @@ $(document).ready(function() {
   brush.width = initWidth;
 
   var randomSeed = Math.floor(Math.random()*(files.length));
-  var remixSrc = filesDir + files[randomSeed];
-  var remixTxt = txt[randomSeed];
+  var remixSrc = filesDir + filesObj.files[randomSeed].filename;
+  var remixTxt = '<a href="' + filesObj.files[randomSeed].srcurl + '" target="_blank">' + filesObj.files[randomSeed].title + '</a><br>' + filesObj.files[randomSeed].meta;
+
   var imgBg = fabric.Image.fromURL(remixSrc, function(img) {
     var iw = img.getWidth();
     var ih = img.getHeight();
