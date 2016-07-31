@@ -64,6 +64,7 @@ gulp.task('js-depends', function() {
          "bower_components/jquery-ui/ui/minified/position.min.js",
          "bower_components/jquery-ui/ui/minified/draggable.min.js",
          "bower_components/jquery-ui/ui/minified/slider.min.js",
+         "bower_components/moment/min/moment.min.js",
          "bower_components/fabric.js/dist/fabric.min.js"
       ])
       .pipe(concat('js-depends.js'))

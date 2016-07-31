@@ -1,46 +1,45 @@
-// Userlist data array for filling in info box
-// var userListData = [];
+var remixlistData = [];
 
-// DOM Ready =============================================================
-// $(document).ready(function() {
-//
-//     // Populate the user table on initial page load
-//     // populateTable();
-//
-//     // Username link click
-//     // $('#userList table tbody').on('click', 'td a.linkshowuser', showUserInfo);
-//
-//     // Add User button click
-//     // $('#save-share').on('click', addRemix(remix));
-// });
+$(function(){
+	if($('div.remix-list').length) {
+    getRemixes();
+  }
+});
 
-// Functions =============================================================
+function getRemixes() {
+    var html;
+    $.getJSON( '/remix/remixlist', function( data ) {
+        remixlistData = data;
+        $.each(data, function(){
+            var date = moment(Date.parse(this.date)).format('DD MMM YYYY');
+            html += '<div>';
+            html += '<div>' + this.remixsvg + '</div>';
+            html += '<span><a href="mailto:' + this.email + '" class="">' + this.fullname + '</a></span>';
+            html += '<a class="twitter" target="_blank" href="https://twitter.com/share?hashtags=RemixParty&via=remixpartywip&text=' + 'Test' + '&url=' + 'http://www.remixparty.com">Tweet</a>';
+            html += '<span>' + date + '</span>';
+            html += '</div>';
+        });
+        $('.remix-list').html(html);
+    });
+};
 
-// Fill table with data
-// function populateTable() {
-//
-//     // Empty content string
-//     var tableContent = '';
-//
-//     // jQuery AJAX call for JSON
-//     $.getJSON( '/users/userlist', function( data ) {
-//
-//         // Stick our user data array into a userlist variable in the global object
-//         userListData = data;
-//
-//         // For each item in our JSON, add a table row and cells to the content string
-//         $.each(data, function(){
-//             tableContent += '<tr>';
-//             tableContent += '<td><a href="#" class="linkshowuser" rel="' + this.username + '" title="Show Details">' + this.username + '</a></td>';
-//             tableContent += '<td>' + this.email + '</td>';
-//             tableContent += '<td><a href="#" class="linkdeleteuser" rel="' + this._id + '">delete</a></td>';
-//             tableContent += '</tr>';
-//         });
-//
-//         // Inject the whole content string into our existing HTML table
-//         $('#userList table tbody').html(tableContent);
-//     });
-// };
+function addRemix(event, remix) {
+    event.preventDefault();
+    var newRemix = remix;
+    $.ajax({
+        type: 'POST',
+        data: newRemix,
+        url: '/remix/addremix',
+        dataType: 'JSON'
+    }).done(function( response ) {
+        if (response.msg === '') {
+          console.log('Stored');
+        }
+        else {
+          console.log(response.msg);
+        }
+    });
+};
 
 // Show User Info
 // function showUserInfo(event) {
@@ -65,27 +64,7 @@
 //     $('#userInfoLocation').text(thisUserObject.location);
 //
 // };
-
-// Add Remix
-function addRemix(event, remix) {
-    event.preventDefault();
-    var newRemix = remix;
-    console.log(newRemix);
-    $.ajax({
-        type: 'POST',
-        data: newRemix,
-        url: '/remix/addremix',
-        dataType: 'JSON'
-    }).done(function( response ) {
-        if (response.msg === '') {
-          console.log('Stored');
-        }
-        else {
-          console.log(response.msg);
-        }
-    });
-};
-
+//
 // Delete User
 // function deleteUser(event) {
 //

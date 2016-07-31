@@ -19,6 +19,7 @@
     "fabric.js": "fabric#^1.6.2",
     "sanitize-css": "^3.3.0",
     "jquery": "^2.2.4",
-    "jquery-ui": "^1.11.4"
+    "jquery-ui": "^1.11.4",
+    "moment": "^2.14.1"
   }
 }
