@@ -6,7 +6,7 @@
 // Tools: DRAW, ADD TEXT (POPPINS), MOVE / RESIZE, ADD IMAGE, SHARE, UNDO?, ERASE
 
 
-$(document).ready(function() {
+$(function() {
   var filesDir = '/stock/';
   var filesObj = {
     files : [
@@ -232,14 +232,6 @@ $(document).ready(function() {
     date.getTime();
     var name = $('#save-name').val();
     var email = $('#save-email').val();
-
-    // window.open(
-    //   canvas.toDataURL({
-    //     format: 'jpg',
-    //     quality: 0.8,
-    //     multiplier: 0.25
-    //   })
-    // )
 
     if(isEmail(email) && name != '') {
       canvasSVG = canvas.toSVG();

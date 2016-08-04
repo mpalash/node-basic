@@ -4,14 +4,14 @@ var router = express.Router();
 /*
  * GET remixlist.
  */
-router.get('/remixlist', function(req, res) {
+router.get('/list', function(req, res) {
     var db = req.db;
     var collection = db.get('remixlist');
     collection.find({},{sort: {'_id': -1}},function(e,docs){
         res.json(docs);
     });
 });
-router.get('/remixthumbs', function(req, res) {
+router.get('/thumbs', function(req, res) {
     var db = req.db;
     var collection = db.get('remixlist');
     collection.count('_id',function(e, num){
@@ -38,7 +38,7 @@ router.get('/:id', function(req, res) {
 /*
  * POST to addremix
  */
-router.post('/addremix', function(req, res) {
+router.post('/add', function(req, res) {
     var db = req.db;
     var collection = db.get('remixlist');
     collection.insert({
@@ -59,7 +59,7 @@ router.post('/addremix', function(req, res) {
 /*
  * DELETE to deleteuser.
  */
-router.delete('/deleteremix/:id', function(req, res) {
+router.delete('/trash/:id', function(req, res) {
     var db = req.db;
     var collection = db.get('remixlist');
     var userToDelete = req.params.id;

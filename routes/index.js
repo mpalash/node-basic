@@ -6,12 +6,12 @@ var title = 'remix party';
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', {
-    title: title
+    appTitle: title
   });
 });
 router.get('/remix', function(req, res) {
   res.render('remix', {
-    title: title,
+    appTitle: title,
     menu: 'remix'
   });
 });

@@ -1,15 +1,14 @@
 {% extends 'layout.html' %}
 
-{% block title %}Remix{% endblock %}
-
 {% block content %}
-    {% include "info-wrapper.html" %}
     <div class="floating-thumbs-wrapper">
       <div class="remix-thumbs">
         <h2>Archive of Remixes</h2>
       </div>
-      <div class="archive-thumbs">
+      <div class="archival-thumbs">
         <h2>Helsinki City Museum</h2>
       </div>
     </div>
+    {% include "info-wrapper.html" %}
+    {% include "overlay-wrapper.html" %}
 {% endblock %}

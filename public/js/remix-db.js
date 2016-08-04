@@ -1,11 +1,15 @@
 $(function(){
   var remixlistData = [];
   var remixthumbsData = [];
+  var archivethumbsData = [];
 	if($('div.remix-list').length) {
     getRemixes();
   }
 	if($('div.remix-thumbs').length) {
-    getThumbs();
+    getRemixThumbs();
+  }
+	if($('div.archival-thumbs').length) {
+    getArchivalThumbs();
   }
 
   // CLICK HANDLERS
@@ -20,7 +24,7 @@ $(function(){
 
 function getRemixes() {
     var html = '';
-    $.getJSON( '/remix/remixlist', function(data) {
+    $.getJSON( '/remix/list', function(data) {
         remixlistData = data;
         $.each(data, function(){
             var date = moment(Date.parse(this.date)).format('DD MMM YYYY');
@@ -35,15 +39,27 @@ function getRemixes() {
         $('.remix-list').html(html);
     });
 };
-function getThumbs() {
+
+function getRemixThumbs() {
     var html = '';
-    $.getJSON( '/remix/remixthumbs', function(data) {
+    $.getJSON( '/remix/thumbs', function(data) {
         remixthumbsData = data;
         $.each(data, function(){
             html += '<div class="thumb"><div class="img-wrapper"><img src="' + this.thumb + '" data-id="' + this._id + '"></div></div>';
         });
         $('.remix-thumbs').append(html);
         layoutThumbs('.remix-thumbs');
+    });
+};
+function getArchivalThumbs() {
+    var html = '';
+    $.getJSON( '/archival/thumbs', function(data) {
+        archivethumbsData = data;
+        $.each(data, function(){
+            html += '<div class="thumb"><div class="img-wrapper"><img src="./stock/' + this.filename + '" data-id="' + this._id + '"></div></div>';
+        });
+        $('.archival-thumbs').append(html);
+        layoutThumbs('.archival-thumbs');
     });
 };
 function layoutThumbs(parent) {
@@ -59,6 +75,7 @@ function layoutThumbs(parent) {
     });
   });
 }
+
 function getRemix(id) {
   var html = '';
   $.getJSON( '/remix/' + id, function(data) {
@@ -84,7 +101,7 @@ function addRemix(event, remix) {
     $.ajax({
         type: 'POST',
         data: newRemix,
-        url: '/remix/addremix',
+        url: '/remix/add',
         dataType: 'JSON'
     }).done(function( response ) {
         if (response.msg === '') {

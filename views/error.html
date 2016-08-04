@@ -1,13 +1,11 @@
 {% extends 'layout.html' %}
 
-{% block title %}Error{% endblock %}
-
 {% block content %}
 <div class="error">
   <h1>{{ message }}</h1>
   <h2>{{ error.status }}</h2>
-  <pre>
+  <!-- <pre>
     {error.stack}
-  </pre>
+  </pre> -->
 </div>
 {% endblock %}

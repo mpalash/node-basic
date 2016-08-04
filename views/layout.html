@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-    <title>{{ title }}</title>
+    <title>{{ appTitle }}</title>
 
     <link rel="stylesheet" href="/css/styles.min.css" media="screen" charset="utf-8" />
 
@@ -15,7 +15,7 @@
   <body>
     <div class="nav-wrapper">
       <a class="info" href="#info"></a>
-      <a class="logo" href="/">{{ title }}</a>
+      <a class="logo" href="/">{{ appTitle }}</a>
     </div>
     <div class="page-wrapper">
       {% block content %}{% endblock %}
