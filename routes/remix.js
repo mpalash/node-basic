@@ -2,18 +2,41 @@ var express = require('express');
 var router = express.Router();
 
 /*
- * GET userlist.
+ * GET remixlist.
  */
 router.get('/remixlist', function(req, res) {
     var db = req.db;
     var collection = db.get('remixlist');
-    collection.find({},{},function(e,docs){
+    collection.find({},{sort: {'_id': -1}},function(e,docs){
+        res.json(docs);
+    });
+});
+router.get('/remixthumbs', function(req, res) {
+    var db = req.db;
+    var collection = db.get('remixlist');
+    collection.count('_id',function(e, num){
+      console.log(num);
+    });
+    collection.find({},{
+      sort: {'_id': -1},
+      fields: {
+        thumb: 1
+      }
+    },function(e,docs){
+        res.json(docs);
+    });
+});
+router.get('/:id', function(req, res) {
+    var db = req.db;
+    var collection = db.get('remixlist');
+    var remixId = req.params.id;
+    collection.findOne({ '_id' : remixId }, function(e,docs) {
         res.json(docs);
     });
 });
 
 /*
- * POST to adduser.
+ * POST to addremix
  */
 router.post('/addremix', function(req, res) {
     var db = req.db;

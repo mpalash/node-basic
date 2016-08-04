@@ -14,12 +14,8 @@
   </head>
   <body>
     <div class="nav-wrapper">
-      <h1><a href="/">{{ title }}</a></h1>
-      <ul>
-        <li class="{% if menu == 'remix' %} active {% endif %}"><a href="/remix">Remix</a></li>
-        <li class="{% if menu == 'info' %} active {% endif %}"><a href="/info">Info</a></li>
-        <li class="{% if menu == 'remixes' %} active {% endif %}"><a href="/remixes">Remixes</a></li>
-      </ul>
+      <a class="info" href="#info"></a>
+      <a class="logo" href="/">{{ title }}</a>
     </div>
     <div class="page-wrapper">
       {% block content %}{% endblock %}

@@ -86,7 +86,7 @@ $(document).ready(function() {
   brush.color = initColor;
   brush.width = initWidth;
 
-  var randomSeed = Math.floor(Math.random()*(files.length));
+  var randomSeed = Math.floor(Math.random()*(filesObj.files.length));
   var remixSrc = filesDir + filesObj.files[randomSeed].filename;
   var remixTxt = '<a href="' + filesObj.files[randomSeed].srcurl + '" target="_blank">' + filesObj.files[randomSeed].title + '</a><br>' + filesObj.files[randomSeed].meta;
 
@@ -232,6 +232,15 @@ $(document).ready(function() {
     date.getTime();
     var name = $('#save-name').val();
     var email = $('#save-email').val();
+
+    // window.open(
+    //   canvas.toDataURL({
+    //     format: 'jpg',
+    //     quality: 0.8,
+    //     multiplier: 0.25
+    //   })
+    // )
+
     if(isEmail(email) && name != '') {
       canvasSVG = canvas.toSVG();
       canvasPNG.src = canvas.toDataURL({
@@ -239,8 +248,8 @@ $(document).ready(function() {
       });
       thumbJPG.src = canvas.toDataURL({
         format: 'jpg',
-        quality: 0.9,
-        multiplier: 0.5
+        quality: 0.8,
+        multiplier: 0.25
       });
       var fileSrc = remixSrc.split('/').slice(-1)[0];
       var newRemix = {
