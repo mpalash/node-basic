@@ -85,8 +85,11 @@ a {
   transition: all 0.2s ease-out;
   &.visible {
     visibility: visible;
-    opacity: 1;
+    opacity: 0.5;
     transform: scale(1);
+    & ~ div {
+      display: none;
+    }
   }
   .overlay-content {
 
