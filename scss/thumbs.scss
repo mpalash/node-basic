@@ -32,7 +32,6 @@
     transform-origin: 200px 200px;
     animation: thumbs 10s infinite linear;
     &:hover {
-      transform: scale(1.2);
       z-index: 200;
       animation-play-state: paused;
       .img-wrapper {
@@ -60,7 +59,6 @@
         width: 150px;
         background-color: rgba($violet, 0.7);
         color: white;
-        z-index: 5;
       }
       img {
         position: absolute;

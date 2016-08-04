@@ -55,7 +55,7 @@ gulp.task('server', function() {
    });
 });
 
-gulp.task('js-depends', function() {
+gulp.task('scripts', function() {
    gulp.src([
          "bower_components/jquery/dist/jquery.min.js",
          "bower_components/jquery-ui/ui/minified/core.min.js",
@@ -65,9 +65,11 @@ gulp.task('js-depends', function() {
          "bower_components/jquery-ui/ui/minified/draggable.min.js",
          "bower_components/jquery-ui/ui/minified/slider.min.js",
          "bower_components/moment/min/moment.min.js",
-         "bower_components/fabric.js/dist/fabric.min.js"
+         "bower_components/fabric.js/dist/fabric.min.js",
+         "public/js/remix-widget.js",
+         "public/js/remix-db.js"
       ])
-      .pipe(concat('js-depends.js'))
+      .pipe(concat('scripts.js'))
       .pipe(gulp.dest("public/js/"))
 });
 gulp.task('css-depends', function() {
@@ -87,7 +89,7 @@ gulp.task('start', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['scss/*.scss','sketch/*.sketch'], function() {
-     runSequence('icons','sass')
+  gulp.watch(['scss/*.scss','sketch/*.sketch','public/js/*.js'], function() {
+     runSequence('icons','sass','scripts')
   });
 });

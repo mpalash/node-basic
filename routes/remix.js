@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 /*
- * GET remixlist.
+ * GET list
  */
 router.get('/list', function(req, res) {
     var db = req.db;
@@ -11,6 +11,10 @@ router.get('/list', function(req, res) {
         res.json(docs);
     });
 });
+
+/*
+ * GET thumbs
+ */
 router.get('/thumbs', function(req, res) {
     var db = req.db;
     var collection = db.get('remixlist');
@@ -26,6 +30,10 @@ router.get('/thumbs', function(req, res) {
         res.json(docs);
     });
 });
+
+/*
+ * GET :id
+ */
 router.get('/:id', function(req, res) {
     var db = req.db;
     var collection = db.get('remixlist');
@@ -36,7 +44,7 @@ router.get('/:id', function(req, res) {
 });
 
 /*
- * POST to addremix
+ * POST to add
  */
 router.post('/add', function(req, res) {
     var db = req.db;
@@ -57,7 +65,7 @@ router.post('/add', function(req, res) {
 });
 
 /*
- * DELETE to deleteuser.
+ * DELETE to trash.
  */
 router.delete('/trash/:id', function(req, res) {
     var db = req.db;
