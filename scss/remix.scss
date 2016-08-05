@@ -18,10 +18,9 @@ $tool-background: #ccc;
   .fabric-wrapper {
     width: 800px;
     height: 800px;
-    box-shadow: 0 0 0 1px #eee;
+    box-shadow: 0 0 15px rgba(black, 0.1);
   }
   .description {
-    margin: 10px;
     text-align: center;
     a {
       font-weight: bold;

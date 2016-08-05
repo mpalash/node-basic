@@ -86,9 +86,15 @@ $(function() {
   brush.color = initColor;
   brush.width = initWidth;
 
-  var randomSeed = Math.floor(Math.random()*(filesObj.files.length));
-  var remixSrc = filesDir + filesObj.files[randomSeed].filename;
-  var remixTxt = '<a href="' + filesObj.files[randomSeed].srcurl + '" target="_blank">' + filesObj.files[randomSeed].title + '</a><br>' + filesObj.files[randomSeed].meta;
+  if($('.remix-wrapper').length && $('.remix-wrapper').data('remixsrc') !== '') {
+    var remixSrc = filesDir + $('.remix-wrapper').data('remixsrc');
+    var remixTxt = ''
+  } else {
+    var randomSeed = Math.floor(Math.random()*(filesObj.files.length));
+    var remixSrc = filesDir + filesObj.files[randomSeed].filename;
+    var remixTxt = '<a href="' + filesObj.files[randomSeed].srcurl + '" target="_blank">' + filesObj.files[randomSeed].title + '</a><br>' + filesObj.files[randomSeed].meta;
+  }
+
 
   var imgBg = fabric.Image.fromURL(remixSrc, function(img) {
     var iw = img.getWidth();
@@ -108,7 +114,10 @@ $(function() {
     img.set('lockUniScaling', true);
     // img.set('selectable', false);
   }, {crossOrigin: 'Anonymous'}, null);
-  descripion.html(remixTxt);
+
+  if(remixTxt !== '') {
+    descripion.html(remixTxt);
+  }
 
   var colorSwitcher = $('.tool.color-switcher');
   colorSwitcher.on('dataChanged', function(){
@@ -232,6 +241,7 @@ $(function() {
     date.getTime();
     var name = $('#save-name').val();
     var email = $('#save-email').val();
+    var title = $('#save-title').val();
 
     if(isEmail(email) && name != '') {
       canvasSVG = canvas.toSVG();
@@ -247,6 +257,7 @@ $(function() {
       var newRemix = {
         'fullname': name,
         'email': email,
+        'title': title,
         'thumb': thumbJPG.src,
         'remix': canvasPNG.src,
         'remixsvg': canvasSVG,
@@ -256,6 +267,7 @@ $(function() {
       addRemix(event, newRemix);
       $('#save-name').val('');
       $('#save-email').val('');
+      $('#save-title').val('');
       $('#save-share + .error').hide();
     } else {
       $('#save-share + .error').show();

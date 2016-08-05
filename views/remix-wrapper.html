@@ -1,8 +1,12 @@
-<div class="remix-wrapper">
+<div class="remix-wrapper" data-remixsrc="{{ remixsrc }}">
   <div class="fabric-wrapper">
       <canvas id="remix-canvas" width="800" height="800"></canvas>
   </div>
-  <p class="description"></p>
+  <div class="meta-wrapper">
+    <span class="description">
+      <a href="{{ srcurl }}">{{ title }}</a><br>{{ meta }}
+    </span>
+  </div>
   <div class="tools">
     <div class="tool text-typer" data-text="" data-font="Helvetica" data-font-size="36" data-color="#FC173B">
       <div class="handle">
@@ -45,8 +49,9 @@
       <div class="handle">
         <span>Fill this out</span>
       </div>
-      <input id="save-name" type="text" name="name" value="" placeholder="Name">
-      <input id="save-email" type="email" name="email" value="" placeholder="Email">
+      <input id="save-name" type="text" name="name" value="" placeholder="Your Full-name">
+      <input id="save-email" type="email" name="email" value="" placeholder="Email (only for our records)">
+      <input id="save-title" type="text" name="title" value="" placeholder="A Title (optional)">
       <button id="save-share" type="button" name="save">Save and share</button>
       <p class="error">Please fill in your name and a valid email</p>
     </div>

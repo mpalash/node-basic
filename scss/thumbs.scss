@@ -25,12 +25,21 @@
   padding: 80px 40px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   .thumb {
     position: absolute;
     transform-origin: 200px 200px;
     animation: thumbs 10s infinite linear;
+    .img-wrapper {
+      animation: thumbs 10s infinite reverse linear;
+    }
+    &:nth-child(2n) {
+      animation: thumbs 10s infinite reverse linear;
+      .img-wrapper {
+        animation: thumbs 10s infinite linear;
+      }
+    }
     &:hover {
       z-index: 200;
       animation-play-state: paused;
@@ -44,8 +53,6 @@
       left: 0;
       width: 150px;
       height: 150px;
-      overflow: hidden;
-      animation: thumbs 10s infinite reverse linear;
       cursor: pointer;
       &:hover:after {
         position: absolute;
@@ -53,6 +60,7 @@
         left: 0;
         content: 'VIEW';
         font-size: 18px;
+        font-weight: bold;
         letter-spacing: 0.05em;
         text-align: center;
         line-height: 150px;
@@ -67,19 +75,16 @@
         margin: 0 auto;
         max-width: 150px;
         max-height: 150px;
-        box-shadow: 0 0 5px rgba(black, 0.3); // : 2px solid $violet;
+        box-shadow: 0 0 15px rgba(black, 0.1);
       }
     }
   }
   @for $i from 1 through 50 {
     $duration: random(5) + 7s;
-    $delay: random(2) + 0s;
     .thumb:nth-child(#{$i}) {
       animation-duration: $duration;
-      animation-delay: $delay;
       .img-wrapper {
         animation-duration: $duration;
-        animation-delay: $delay;
       }
     }
   }

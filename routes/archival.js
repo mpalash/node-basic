@@ -40,4 +40,16 @@ router.get('/:id', function(req, res) {
     });
 });
 
+/*
+ * GET :id
+ */
+router.get('/file/:name', function(req, res) {
+    var db = req.db;
+    var collection = db.get('archivelist');
+    var filename = req.params.name;
+    collection.findOne({ 'filename' : filename }, function(e,docs) {
+        res.json(docs);
+    });
+});
+
 module.exports = router;

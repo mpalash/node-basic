@@ -9,11 +9,5 @@ router.get('/', function(req, res) {
     appTitle: title
   });
 });
-router.get('/remix', function(req, res) {
-  res.render('remix', {
-    appTitle: title,
-    menu: 'remix'
-  });
-});
 
 module.exports = router;

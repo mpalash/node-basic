@@ -1,6 +1,36 @@
 var express = require('express');
 var router = express.Router();
 
+var title = 'remix party';
+
+/*
+ * GET new
+ */
+router.get('/', function(req, res) {
+  res.render('remix', {
+    appTitle: title
+  });
+});
+router.get('/new', function(req, res) {
+  res.render('remix', {
+    appTitle: title
+  });
+});
+router.get('/new/:id', function(req, res) {
+  var db = req.db;
+  var collection = db.get('archivelist');
+  var remixId = req.params.id;
+  collection.findOne({ '_id' : remixId }, function(e,docs) {
+    res.render('remix', {
+      appTitle: title,
+      remixsrc: docs.filename,
+      srcurl: docs.srcurl,
+      title: docs.title,
+      meta: docs.meta
+    });
+  });
+});
+
 /*
  * GET list
  */
@@ -37,7 +67,9 @@ router.get('/thumbs', function(req, res) {
 router.get('/:id', function(req, res) {
     var db = req.db;
     var collection = db.get('remixlist');
+    var archCollection = db.get('archivelist');
     var remixId = req.params.id;
+
     collection.findOne({ '_id' : remixId }, function(e,docs) {
         res.json(docs);
     });
