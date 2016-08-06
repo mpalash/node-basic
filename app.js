@@ -36,8 +36,8 @@ app.use(function(req,res,next){
 });
 
 app.use('/', routes);
-app.use('/remix', remix);
-app.use('/archival', archival);
+app.use('/api/remix', remix);
+app.use('/api/archival', archival);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

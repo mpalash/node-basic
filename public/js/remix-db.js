@@ -25,11 +25,11 @@ $(function(){
     var id = $(this).data('id');
     window.location = "/remix/new/" + id;
   });
-  $('.overlay-wrapper').on('click','.prev', function(e){
+  $('.overlay-wrapper').on('click','.nav-gallery', function(e){
     $('.overlay-wrapper').toggleClass('visible');
     $('.overlay-content').html('');
   });
-  $('.overlay-wrapper').on('click','.next', function(e){
+  $('.overlay-wrapper').on('click','.nav-remix', function(e){
     var id = $('.meta-wrapper .remix-src').data('id');
     window.location = "/remix/new/" + id;
   });
@@ -37,7 +37,7 @@ $(function(){
 
 function getRemixes() {
     var html = '';
-    $.getJSON( '/remix/list', function(data) {
+    $.getJSON( '/api/remix/list', function(data) {
         remixlistData = data;
         $.each(data, function(){
             var date = moment(Date.parse(this.date)).format('D MMM YYYY');
@@ -55,7 +55,7 @@ function getRemixes() {
 
 function getRemixThumbs() {
     var html = '';
-    $.getJSON( '/remix/thumbs', function(data) {
+    $.getJSON( '/api/remix/thumbs', function(data) {
         remixthumbsData = data;
         $.each(data, function(){
             html += '<div class="thumb"><div class="img-wrapper" data-id="' + this._id + '"><img src="' + this.thumb + '"></div></div>';
@@ -67,7 +67,7 @@ function getRemixThumbs() {
 
 function getArchivalThumbs() {
     var html = '';
-    $.getJSON( '/archival/thumbs', function(data) {
+    $.getJSON( '/api/archival/thumbs', function(data) {
         archivethumbsData = data;
         $.each(data, function(){
             html += '<div class="thumb"><div class="img-wrapper" data-id="' + this._id + '"><img src="./stock/' + this.filename + '"></div></div>';
@@ -79,7 +79,7 @@ function getArchivalThumbs() {
 
 function getRemix(id) {
   var html = '';
-  $.getJSON( '/remix/' + id, function(data) {
+  $.getJSON( '/api/remix/' + id, function(data) {
       var date = moment(Date.parse(data.date)).format('D MMM YYYY');
 
       html += '<div>' + data.remixsvg + '</div>';
@@ -101,7 +101,7 @@ function getRemix(id) {
 
 function getArchival(filename) {
   var html = ''
-  $.getJSON('/archival/file/' + filename, function(data) {
+  $.getJSON('/api/archival/file/' + filename, function(data) {
     html += '<div class="remix-src" data-id="' + data._id + '">';
       html += '<span><a href="' + data.srcurl + '">' + data.title + '</a></span>'
       html += '<span>' + data.meta + '</span>'
@@ -118,7 +118,7 @@ function addRemix(event, remix) {
     $.ajax({
         type: 'POST',
         data: newRemix,
-        url: '/remix/add',
+        url: '/api/remix/add',
         dataType: 'JSON'
     }).done(function( response ) {
         if (response.msg === '') {
