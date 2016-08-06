@@ -51,6 +51,7 @@ router.get('/remix/:id', function(req, res) {
     res.render('remix-id', {
       apptitle: title,
       remixsvg: docs.remixsvg,
+      remixsrc: docs.remixsrc,
       fullname: docs.fullname,
       email: docs.email,
       date: date

@@ -1,10 +1,5 @@
-// FIXME: Put files and array into backend.
-
-// Click to select Image
-// Description below Image
-// Start remix -> tools
+// TODO: Social share & og data
 // Tools: DRAW, ADD TEXT (POPPINS), MOVE / RESIZE, ADD IMAGE, SHARE, UNDO?, ERASE
-
 
 $(function() {
   var filesDir = '/stock/';

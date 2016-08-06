@@ -39,7 +39,6 @@ router.get('/thumbs', function(req, res) {
 router.get('/:id', function(req, res) {
     var db = req.db;
     var collection = db.get('remixlist');
-    var archCollection = db.get('archivelist');
     var remixId = req.params.id;
     collection.findOne({ '_id' : remixId }, function(e,docs) {
         res.json(docs);

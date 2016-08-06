@@ -11,6 +11,10 @@ $(function(){
 	if($('div.archival-thumbs').length) {
     getArchivalThumbs();
   }
+	if($('div.remix-id').length) {
+    var filename = $('.remix-id').data('filename');
+    getArchival(filename);
+  }
 
   // CLICK HANDLERS
   $('a.info').on('click', function(e){
@@ -18,18 +22,22 @@ $(function(){
     $('.info-wrapper, a.info').toggleClass('visible');
   });
   $('.remix-thumbs').on('click','.img-wrapper', function(e){
+    e.preventDefault();
     getRemix($(this).data('id'));
     $('.overlay-wrapper').toggleClass('visible');
   });
   $('.archival-thumbs').on('click','.img-wrapper', function(e){
+    e.preventDefault();
     var id = $(this).data('id');
     window.location = "/remix/new/" + id;
   });
   $('.overlay-wrapper').on('click','.nav-gallery', function(e){
+    e.preventDefault();
     $('.overlay-wrapper').toggleClass('visible');
     $('.overlay-content').html('');
   });
   $('.overlay-wrapper').on('click','.nav-remix', function(e){
+    e.preventDefault();
     var id = $('.meta-wrapper .remix-src').data('id');
     window.location = "/remix/new/" + id;
   });
@@ -58,7 +66,10 @@ function getRemixThumbs() {
     $.getJSON( '/api/remix/thumbs', function(data) {
         remixthumbsData = data;
         $.each(data, function(){
-            html += '<div class="thumb"><div class="img-wrapper" data-id="' + this._id + '"><img src="' + this.thumb + '"></div></div>';
+            html += '<div class="thumb"><div class="img-wrapper" data-id="' + this._id + '">';
+            html += '<img src="' + this.thumb + '">';
+            html += '<a href="/remix/' + this._id + '">View</a>';
+            html += '</div></div>';
         });
         $('.remix-thumbs').append(html);
         layoutThumbs('.remix-thumbs');
@@ -70,7 +81,10 @@ function getArchivalThumbs() {
     $.getJSON( '/api/archival/thumbs', function(data) {
         archivethumbsData = data;
         $.each(data, function(){
-            html += '<div class="thumb"><div class="img-wrapper" data-id="' + this._id + '"><img src="./stock/' + this.filename + '"></div></div>';
+            html += '<div class="thumb"><div class="img-wrapper" data-id="' + this._id + '">';
+            html += '<img src="./stock/' + this.filename + '">';
+            html += '<a href="/remix/new/' + this._id + '">Remix</a>';
+            html += '</div></div>';
         });
         $('.archival-thumbs').append(html);
         layoutThumbs('.archival-thumbs');
