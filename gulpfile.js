@@ -64,7 +64,6 @@ gulp.task('scripts', function() {
          "bower_components/jquery-ui/ui/minified/position.min.js",
          "bower_components/jquery-ui/ui/minified/draggable.min.js",
          "bower_components/jquery-ui/ui/minified/slider.min.js",
-         "bower_components/moment/min/moment.min.js",
          "bower_components/fabric.js/dist/fabric.min.js",
          "public/js/remix-widget.js",
          "public/js/remix-db.js"
@@ -89,7 +88,7 @@ gulp.task('start', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['scss/*.scss','sketch/*.sketch','public/js/*.js'], function() {
+  gulp.watch(['scss/*.scss','sketch/*.sketch','public/js/*.js','gulpfile.js'], function() {
      runSequence('icons','sass','scripts')
   });
 });

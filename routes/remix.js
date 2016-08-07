@@ -1,4 +1,5 @@
 var express = require('express');
+var moment = require('moment');
 var router = express.Router();
 
 var title = 'remix party';
@@ -41,6 +42,7 @@ router.get('/:id', function(req, res) {
     var collection = db.get('remixlist');
     var remixId = req.params.id;
     collection.findOne({ '_id' : remixId }, function(e,docs) {
+        docs.date = moment(Date.parse(docs.date)).format('D MMM YYYY');
         res.json(docs);
     });
 });

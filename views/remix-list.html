@@ -1,6 +1,19 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-  <h1>Remixes</h1>
-  <div class="remix-list"></div>
+  <div class="remix-list">
+    <h2>All Remixes</h2>
+    {% for remix in data %}
+    <div>
+      <a href="/remix/{% autoescape false %}{{ remix._id }}{% endautoescape %}">
+        {% autoescape false %}{{ remix.remixsvg }}{% endautoescape %}
+      </a>
+      <div class="meta-wrapper">
+          <span>Remix by <a href="mailto:{{ remix.email }}">{{ remix.fullname }}</a></span>
+          <span>{{ remix.date }}</span>
+          <span>Archive of Remixes</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 {% endblock %}

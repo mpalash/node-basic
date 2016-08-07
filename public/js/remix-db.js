@@ -2,9 +2,7 @@ $(function(){
   var remixlistData = [];
   var remixthumbsData = [];
   var archivethumbsData = [];
-	if($('div.remix-list').length) {
-    getRemixes();
-  }
+
 	if($('div.remix-thumbs').length) {
     getRemixThumbs();
   }
@@ -43,24 +41,6 @@ $(function(){
   });
 });
 
-function getRemixes() {
-    var html = '';
-    $.getJSON( '/api/remix/list', function(data) {
-        remixlistData = data;
-        $.each(data, function(){
-            var date = moment(Date.parse(this.date)).format('D MMM YYYY');
-            html += '<div>';
-            html += '<div>' + this.remixsvg + '</div>';
-            html += '<div><img src="' + this.thumb + '" data-id="' + this._id + '"></div>';
-            html += '<span><a href="mailto:' + this.email + '" class="">' + this.fullname + '</a></span>';
-            html += '<a class="twitter" target="_blank" href="https://twitter.com/share?hashtags=RemixParty&via=remixpartywip&text=' + 'Test' + '&url=' + 'http://www.remixparty.com">Tweet</a>';
-            html += '<span>' + date + '</span>';
-            html += '</div>';
-        });
-        $('.remix-list').html(html);
-    });
-};
-
 function getRemixThumbs() {
     var html = '';
     $.getJSON( '/api/remix/thumbs', function(data) {
@@ -94,15 +74,13 @@ function getArchivalThumbs() {
 function getRemix(id) {
   var html = '';
   $.getJSON( '/api/remix/' + id, function(data) {
-      var date = moment(Date.parse(data.date)).format('D MMM YYYY');
-
       html += '<div>' + data.remixsvg + '</div>';
       html += '<div class="meta-wrapper">'
         html += '<div><span>Remix by <a href="mailto:' + data.email + '" class="">' + data.fullname + '</a></span>';
         if(data.title){
           html += '<span>' + data.title + '</span>';
         }
-        html += '<span>' + date + '</span>';
+        html += '<span>' + data.date + '</span>';
         html += '<span>Archive of Remixes</span></div>';
       html += '</div>';
 

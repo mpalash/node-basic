@@ -62,3 +62,27 @@ a {
     font-size: 32px;
   }
 }
+
+.remix-list {
+  padding: 80px 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  h2 {
+    flex: 0 0 100%;
+  }
+  & > div {
+    flex: 0 1 200px;
+    margin: 0 1vw 5vw 1vw;
+    svg {
+      max-width: 450px;
+      max-height: 450px;
+      box-shadow: 0 0 15px rgba(black, 0.1);
+    }
+  }
+  .meta-wrapper {
+    flex-direction: column;
+  }
+}
