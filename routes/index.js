@@ -66,7 +66,6 @@ router.get('/all', function(req, res) {
     var db = req.db;
     var collection = db.get('remixlist');
     collection.find({},{sort: {'_id': -1}},function(e,docs){
-        // res.json(docs);
         docs.forEach(
           function(e, i, a) {
             e.date = moment(Date.parse(e.date)).format('D MMM YYYY');
