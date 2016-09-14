@@ -17,10 +17,6 @@ a {
   &:active {
     text-decoration: underline;
   }
-  &:link,
-  &:visited {
-    color: $violet;
-  }
 }
 
 .info-wrapper {
@@ -34,32 +30,23 @@ a {
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 80px 40px;
-  background-color: darken($violet,50%);
+  justify-content: space-between;
+  font-size: 3vw;
+  padding: 80px;
+  background-color: black;
   color: white;
 
   visibility: hidden;
-  opacity: 0;
-  transform: scale(1.05);
-  transition: all 0.2s ease-out;
+  transform: translateY(-100vh);
+  transition: all 0.5s ease-in-out;
   &.visible {
     visibility: visible;
-    opacity: 1;
-    transform: scale(1);
+    transform: translateY(0);
   }
   a {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 1em;
-    &:hover,
-    &:active {
-      color: white;
-    }
-  }
-  p {
-    font-weight: bold;
-    font-size: 32px;
+    color: white;
+    text-align: center;
+    text-decoration: none !important;
   }
 }
 

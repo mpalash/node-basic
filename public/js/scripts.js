@@ -350,7 +350,7 @@ $(function(){
   // CLICK HANDLERS
   $('a.info').on('click', function(e){
     e.preventDefault();
-    $('.info-wrapper, a.info').toggleClass('visible');
+    $('.info-wrapper').toggleClass('visible');
   });
   $('.remix-thumbs').on('click','.img-wrapper', function(e){
     e.preventDefault();

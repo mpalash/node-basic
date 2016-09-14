@@ -43,3 +43,10 @@
   font-weight: 700;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Visual';
+  src: url($fontpath + 'visual/Visual-regular-webfont.woff2') format('woff2'),
+       url($fontpath + 'visual/Visual-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

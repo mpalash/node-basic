@@ -1,3 +1,8 @@
+.logo {
+  font-family: 'Visual', sans-serif;
+  text-transform: uppercase;
+}
+
 .nav-wrapper {
   position: fixed;
   top: 0;
@@ -6,53 +11,15 @@
   a {
     padding: 0;
     margin: 0 20px 0 0;
-    font-family: 'Poppins', 'Work Sans', Helvetica, Arial, sans-serif;
+    font-family: 'Visual', sans-serif;
     font-size: 24px;
     line-height: 40px;
-    text-transform: uppercase;
     text-decoration: none !important;
     letter-spacing: 0.05em;
-    color: $violet;
+    color: black;
     position: relative;
   }
   .logo {
-    font-weight: bold;
     margin: 0 20px;
-  }
-  .info {
-    &:before,
-    &:after {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 40px;
-      width: 40px;
-      text-align: center;
-      transition: all 0.25s ease-out;
-      transform-origin: center;
-    }
-    &:before {
-      content:'\2261';
-      opacity: 1;
-      transform: rotate(0);
-    }
-    &:after {
-      content:'	\00d7';
-      opacity: 0;
-      transform: rotate(180deg);
-    }
-    &.visible {
-      &:before {
-        content:'\2261';
-        opacity: 0;
-        transform: rotate(180deg);
-      }
-      &:after {
-        content:'	\00d7';
-        opacity: 1;
-        transform: rotate(0);
-        color: white;
-      }
-    }
   }
 }
