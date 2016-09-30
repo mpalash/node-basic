@@ -74,8 +74,8 @@ router.post('/add', function(req, res) {
 router.delete('/trash/:id', function(req, res) {
     var db = req.db;
     var collection = db.get('remixlist');
-    var userToDelete = req.params.id;
-    collection.remove({ '_id' : userToDelete }, function(err) {
+    var remixToDelete = req.params.id;
+    collection.remove({ '_id' : remixToDelete }, function(err) {
         res.send((err === null) ? { msg: '' } : { msg:'error: ' + err });
     });
 });

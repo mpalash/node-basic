@@ -1,6 +1,9 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+  <div class="nav-wrapper">
+    <a href="/"><i class="fa fa-angle-up"></i>archive</a>
+  </div>
   <div class="remix-list">
     <h2>All Remixes</h2>
     {% for remix in data %}
@@ -11,7 +14,6 @@
       <div class="meta-wrapper">
           <span>Remix by <a href="mailto:{{ remix.email }}">{{ remix.fullname }}</a></span>
           <span>{{ remix.date }}</span>
-          <span>Archive of Remixes</span>
       </div>
     </div>
     {% endfor %}

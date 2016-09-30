@@ -32,7 +32,10 @@ $(function(){
   $('.overlay-wrapper').on('click','.nav-gallery', function(e){
     e.preventDefault();
     $('.overlay-wrapper').toggleClass('visible');
-    $('.overlay-content').html('');
+    setTimeout(function(){
+      // alert("Boom!");
+      $('.overlay-content').html('');
+    }, 500);
   });
   $('.overlay-wrapper').on('click','.nav-remix', function(e){
     e.preventDefault();
@@ -75,13 +78,12 @@ function getRemix(id) {
   var html = '';
   $.getJSON( '/api/remix/' + id, function(data) {
       html += '<div>' + data.remixsvg + '</div>';
-      html += '<div class="meta-wrapper">'
-        html += '<div><span>Remix by <a href="mailto:' + data.email + '" class="">' + data.fullname + '</a></span>';
+      html += '<div class="meta-wrapper"><div>'
         if(data.title){
-          html += '<span>' + data.title + '</span>';
+          html += '<span>' + data.title + ', </span>';
         }
+        html += '<span>Remix by <a href="mailto:' + data.email + '" class="">' + data.fullname + '</a></span>';
         html += '<span>' + data.date + '</span>';
-        html += '<span>Archive of Remixes</span></div>';
       html += '</div>';
 
       $('.overlay-content').html(html);

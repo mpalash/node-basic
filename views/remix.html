@@ -1,6 +1,12 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+    <div class="nav-wrapper">
+      <a class="prev" href="/"><i class="fa fa-angle-up"></i>archive</a>
+    </div>
     {% include "remix-wrapper.html" %}
-    {% include "info-wrapper.html" %}
+    <div class="nav2-wrapper">
+      <!-- <a class="logo" href="/">{{ apptitle }}</a> -->
+      <a class="remix-refresh" href="/remix"><i class="fa fa-repeat"></i></a>
+    </div>
 {% endblock %}

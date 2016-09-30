@@ -12,10 +12,27 @@ body {
   }
 }
 a {
-  color: $violet;
+  color: black;
   &:hover,
   &:active {
     text-decoration: underline;
+  }
+  &.prev,
+  &.next,
+  &.remix-refresh {
+    display: block;
+    text-align: center;
+    text-decoration: none !important;
+    transition: all 0.3s ease-out;
+  }
+  &.prev:hover {
+    transform: translateY(-10px);
+  }
+  &.next:hover {
+    transform: translateY(10px);
+  }
+  &.remix-refresh:hover {
+    transform: rotate(180deg);
   }
 }
 
@@ -45,8 +62,6 @@ a {
   }
   a {
     color: white;
-    text-align: center;
-    text-decoration: none !important;
   }
 }
 

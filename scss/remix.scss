@@ -16,12 +16,12 @@ $tool-background: #ccc;
   align-items: center;
 
   .fabric-wrapper {
-    width: 800px;
-    height: 800px;
-    box-shadow: 0 0 15px rgba(black, 0.1);
+    width: 600px;
+    height: 600px;
+    // box-shadow: 0 0 15px rgba(black, 0.1);
   }
   .description {
-    text-align: center;
+    margin: 20px;
     a {
       font-weight: bold;
     }
@@ -107,10 +107,12 @@ $tool-background: #ccc;
       input {
         width: 75%;
         margin: 0;
+        vertical-align: bottom;
       }
       button {
         width: 25%;
         margin: 0 0 0 -5px;
+        vertical-align: bottom;
       }
     }
     .colors {
@@ -142,10 +144,8 @@ $tool-background: #ccc;
       }
       &.object {
         position: relative;
-        color: rgba(black, 0.5);
         &.selected {
           background-color: rgba(black, 0.15);
-          color: #CCC;
         }
         &:after {
           position: absolute;
@@ -154,18 +154,23 @@ $tool-background: #ccc;
           bottom: 0;
           left: 0;
         }
-        &[data-object="select"]:after {
-          content: '';
-          background: url(svg/tool_select.svg) no-repeat 50% 50% / 80% 80%;
+        i {
+          font-size: 18px;
+          line-height: 30px;
+          text-align: center;
         }
-        &[data-object="brush"]:after {
-          content: '';
-          background: url(svg/tool_brush.svg) no-repeat 50% 50% / 80% 80%;
-        }
-        &[data-object="erase"]:after {
-          content: '';
-          background: url(svg/tool_trash.svg) no-repeat 50% 50% / 80% 80%;
-        }
+        // &[data-object="select"]:after {
+        //   content: '';
+        //   background: url(svg/tool_select.svg) no-repeat 50% 50% / 80% 80%;
+        // }
+        // &[data-object="brush"]:after {
+        //   content: '';
+        //   background: url(svg/tool_brush.svg) no-repeat 50% 50% / 80% 80%;
+        // }
+        // &[data-object="erase"]:after {
+        //   content: '';
+        //   background: url(svg/tool_trash.svg) no-repeat 50% 50% / 80% 80%;
+        // }
       }
       &[data-font="Helvetica"] {
         font-family: "Helvetica";

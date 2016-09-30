@@ -74,7 +74,7 @@ $(function() {
   });
   var descripion = $('.remix-wrapper .description');
   var brush = canvas.freeDrawingBrush;
-  var initColor = '#FC173B';
+  var initColor = '#FFF';
   var initWidth = 50;
 
   canvas.isDrawingMode = true;
@@ -99,10 +99,10 @@ $(function() {
     console.log(iw, ih);
     if(iw > ih) {
       // img.scaleToHeight(ch);
-      img.scaleToWidth(750);
+      img.scaleToWidth(500);
     } else {
       // img.scaleToWidth(cw);
-      img.scaleToHeight(750);
+      img.scaleToHeight(500);
     }
     canvas.add(img);
     img.center();

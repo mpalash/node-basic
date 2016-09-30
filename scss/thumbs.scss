@@ -62,7 +62,7 @@
         font-size: 18px;
         letter-spacing: 0.05em;
         text-align: center;
-        text-transform: uppercase;
+        text-transform: capitalize;
         text-decoration: none !important;
         line-height: 150px;
         width: 150px;
@@ -81,7 +81,7 @@
         margin: 0 auto;
         max-width: 150px;
         max-height: 150px;
-        box-shadow: 0 0 15px rgba(black, 0.1);
+        // box-shadow: 0 0 15px rgba(black, 0.1);
       }
     }
   }

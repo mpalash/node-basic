@@ -88,7 +88,10 @@ gulp.task('start', function() {
 });
 
 gulp.task('watch', function() {
+  // gulp.watch(['scss/*.scss','sketch/*.sketch','public/js/*.js','gulpfile.js'], function() {
+  //    runSequence('icons','sass','scripts')
+  // });
   gulp.watch(['scss/*.scss','sketch/*.sketch','public/js/*.js','gulpfile.js'], function() {
-     runSequence('icons','sass','scripts')
+     runSequence('icons','sass')
   });
 });

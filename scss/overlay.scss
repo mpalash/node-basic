@@ -6,33 +6,28 @@
   left: 0;
   overflow: hidden;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-
-  display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;;
-  padding: 0 40px;
+  padding: 40px;
   background-color: white;
 
   visibility: hidden;
-  opacity: 0;
-  transform: scale(1.05);
-  transition: all 0.2s ease-out;
+  opacity: 1;
+  transform: translateY(100vh);
+  transition: all 0.5s ease-out;
   &.visible {
     visibility: visible;
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0);
     & ~ .floating-thumbs-wrapper {
       display: none;
     }
   }
   .prev,
   .next {
-    color: $violet;
-    text-transform: uppercase;
+    font-family: 'Visual', sans-serif;
+    font-size: 24px;
     letter-spacing: 0.05em;
-    font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease-out;
     a {
@@ -40,10 +35,10 @@
     }
   }
   .prev:hover {
-    transform: translateX(-10px);
+    transform: translateY(-10px);
   }
   .next:hover {
-    transform: translateX(10px);
+    transform: translateY(10px);
   }
 
   .overlay-content,
@@ -59,7 +54,9 @@
 }
 .overlay-content {
   svg {
-    box-shadow: 0 0 15px rgba(black, 0.1);
+    width: 600px;
+    height: 600px;
+    // box-shadow: 0 0 15px rgba(black, 0.1);
     text,
     path {
       transition: all 0.3s ease-out;
@@ -73,15 +70,18 @@
   }
 }
 .meta-wrapper {
-  margin: 20px 0 0 0;
-  width: 100%;
+  position: absolute;
+  top: calc(50vh - 250px);
+  right: 0;
+  left: calc(50vw + 300px);
+
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-around;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   font-size: 13px;
   > div {
-    flex: 0 1 40%;
+    margin: 20px;
     span {
       display: block;
     }

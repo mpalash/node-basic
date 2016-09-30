@@ -1,8 +1,10 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+  <div class="nav-wrapper">
+    <a class="info prev" href="#info"><i class="fa fa-angle-up"></i>archive</a>
+  </div>
   <div class="overlay-wrapper visible remix-id" data-filename="{{ remixsrc }}">
-    <span class="prev"><a href="/">&larr;&nbsp;Gallery</a></span>
     <div class="overlay-content">
       <div>
         {% autoescape false %}{{ remixsvg }}{% endautoescape %}
@@ -11,11 +13,12 @@
         <div>
           <span>Remix by <a href="mailto:{{ email }}">{{ fullname }}</a></span>
           <span>{{ date }}</span>
-          <span>Archive of Remixes</span>
         </div>
       </div>
     </div>
-    <span class="next nav-remix">Remix this&nbsp;&rarr;</span>
+  </div>
+  <div class="nav2-wrapper">
+    <a class="nav-remix next" href="#info">remix this<i class="fa fa-angle-down"></i></a>
   </div>
   {% include "info-wrapper.html" %}
 {% endblock %}
