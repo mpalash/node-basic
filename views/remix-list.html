@@ -5,16 +5,18 @@
     <a href="/"><i class="fa fa-angle-up"></i>archive</a>
   </div>
   <div class="remix-list">
-    <h2>All Remixes</h2>
     {% for remix in data %}
-    <div>
-      <a href="/remix/{% autoescape false %}{{ remix._id }}{% endautoescape %}">
+    <div class="remix" data-id="{% autoescape false %}{{ remix._id }}{% endautoescape %}">
+      <a class="remix-id" href="/remix/{% autoescape false %}{{ remix._id }}{% endautoescape %}">
         {% autoescape false %}{{ remix.remixsvg }}{% endautoescape %}
       </a>
       <div class="meta-wrapper">
           <span>Remix by <a href="mailto:{{ remix.email }}">{{ remix.fullname }}</a></span>
-          <span>{{ remix.date }}</span>
-          <span class="remix-delete" data-id="{% autoescape false %}{{ remix._id }}{% endautoescape %}"><i class="fa fa-trash-o"></i></span>
+          <span class="date">{{ remix.displayDate }}</span>
+          <span class="tools">
+            <span class="remix-delete"><i class="fa fa-trash-o"></i></span>
+            <span class="remix-refresh"><i class="fa fa-refresh"></i></span>
+          </span>
       </div>
     </div>
     {% endfor %}

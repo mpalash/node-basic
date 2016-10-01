@@ -90,10 +90,12 @@ a {
     position: relative;
     left: 0;
     top: 20px;
+    .tools span {
+      display: inline-block;
+      margin-right: 5px;
+    }
   }
   .remix-delete {
-    float: right;
     color: $red;
-
   }
 }

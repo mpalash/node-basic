@@ -31,19 +31,47 @@ $(function(){
   });
   $('.remix-list').on('click','.remix-delete', function(e){
     e.preventDefault();
-    var id = $(this).data('id');
-    var confirmation = confirm('Are you sure you want to delete this Remix?');
+    var id = $(this).closest('.remix').data('id');
+    var confirmation = confirm('DELETE this Remix?');
     if (confirmation === true) {
       deleteRemix(e,id);
     } else {
       return false;
     }
   });
+  $('.remix-list').on('click','.remix-refresh', function(e){
+    e.preventDefault();
+    var id = $(this).closest('.remix').data('id');
+
+    $.getJSON( '/api/remix/' + id, function(data) {
+      remix = data;
+    }).done(function(data) {
+      var canvas = new fabric.Canvas('remix-canvas', {
+        backgroundColor: '#FFF'
+      });
+      fabric.loadSVGFromString(remix.remixsvg, function(objects, options) {
+        var obj = fabric.util.groupSVGElements(objects, options);
+        data.thumb = canvas.add(obj.scaleToWidth(600)).toDataURL({
+          format: 'jpg',
+          quality: 0.8,
+          multiplier: 0.25,
+          width: 600,
+          height: 600
+        });
+        var confirmation = confirm('UPDATE this Remix?');
+        if (confirmation === true) {
+          updateRemix(e,id,data);
+        } else {
+          return false;
+        }
+      });
+    });
+
+  });
   $('.overlay-wrapper').on('click','.nav-gallery', function(e){
     e.preventDefault();
     $('.overlay-wrapper').toggleClass('visible');
     setTimeout(function(){
-      // alert("Boom!");
       $('.overlay-content').html('');
     }, 500);
   });
@@ -93,7 +121,7 @@ function getRemix(id) {
           html += '<span>' + data.title + ', </span>';
         }
         html += '<span>Remix by <a href="mailto:' + data.email + '" class="">' + data.fullname + '</a></span>';
-        html += '<span>' + data.date + '</span>';
+        html += '<span>' + data.displayDate + '</span>';
       html += '</div>';
 
       $('.overlay-content').html(html);
@@ -139,6 +167,21 @@ function deleteRemix(event, remixId) {
     $.ajax({
         type: 'DELETE',
         url: '/api/remix/trash/' + delId
+    }).done(function( response ) {
+        if (response.msg === '') {
+          window.location.reload();
+        }
+        else {
+        }
+    });
+};
+function updateRemix(event, remixId, remixData) {
+    event.preventDefault();
+    $.ajax({
+        type: 'PUT',
+        data: remixData,
+        url: '/api/remix/refresh/' + remixId,
+        dataType: 'JSON'
     }).done(function( response ) {
         if (response.msg === '') {
           window.location.reload();

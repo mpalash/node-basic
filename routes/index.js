@@ -68,7 +68,7 @@ router.get('/all', function(req, res) {
     collection.find({},{sort: {'_id': -1}},function(e,docs){
         docs.forEach(
           function(e, i, a) {
-            e.date = moment(Date.parse(e.date)).format('D MMM YYYY');
+            e.displayDate = moment(Date.parse(e.date)).format('D MMM YYYY');
           }
         );
         res.render('remix-list', {

@@ -42,7 +42,7 @@ router.get('/:id', function(req, res) {
     var collection = db.get('remixlist');
     var remixId = req.params.id;
     collection.findOne({ '_id' : remixId }, function(e,docs) {
-        docs.date = moment(Date.parse(docs.date)).format('D MMM YYYY');
+        docs.displayDate = moment(Date.parse(docs.date)).format('D MMM YYYY');
         res.json(docs);
     });
 });
@@ -61,6 +61,32 @@ router.post('/add', function(req, res) {
       'remixsvg': req.body.remixsvg,
       'remixsrc': req.body.remixsrc,
       'date': new Date()
+    }, function(err, result){
+        res.send(
+            (err === null) ? { msg: '' } : { msg: err }
+        );
+    });
+});
+
+/*
+ * POST to edit
+ */
+router.put('/refresh/:id', function(req, res) {
+    var db = req.db;
+    var collection = db.get('remixlist');
+    var remixToUpdate = req.params.id;
+    collection.update(
+    {
+      '_id': remixToUpdate
+    },
+    {
+      'fullname': req.body.fullname,
+      'email': req.body.email,
+      'thumb': req.body.thumb,
+      'remix': req.body.remix,
+      'remixsvg': req.body.remixsvg,
+      'remixsrc': req.body.remixsrc,
+      'date': req.body.date
     }, function(err, result){
         res.send(
             (err === null) ? { msg: '' } : { msg: err }
