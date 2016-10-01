@@ -362,6 +362,16 @@ $(function(){
     var id = $(this).data('id');
     window.location = "/remix/new/" + id;
   });
+  $('.remix-list').on('click','.remix-delete', function(e){
+    e.preventDefault();
+    var id = $(this).data('id');
+    var confirmation = confirm('Are you sure you want to delete this Remix?');
+    if (confirmation === true) {
+      deleteRemix(e,id);
+    } else {
+      return false;
+    }
+  });
   $('.overlay-wrapper').on('click','.nav-gallery', function(e){
     e.preventDefault();
     $('.overlay-wrapper').toggleClass('visible');
@@ -453,6 +463,20 @@ function addRemix(event, remix) {
         }
         else {
           console.log(response.msg);
+        }
+    });
+};
+function deleteRemix(event, remixId) {
+    event.preventDefault();
+    var delId = remixId;
+    $.ajax({
+        type: 'DELETE',
+        url: '/api/remix/trash/' + delId
+    }).done(function( response ) {
+        if (response.msg === '') {
+          window.location.reload();
+        }
+        else {
         }
     });
 };

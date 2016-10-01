@@ -76,6 +76,7 @@ a {
     flex: 0 0 100%;
   }
   & > div {
+    position: relative;
     flex: 0 1 200px;
     margin: 0 1vw 5vw 1vw;
     svg {
@@ -86,5 +87,13 @@ a {
   }
   .meta-wrapper {
     flex-direction: column;
+    position: relative;
+    left: 0;
+    top: 20px;
+  }
+  .remix-delete {
+    float: right;
+    color: $red;
+
   }
 }

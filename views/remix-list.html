@@ -14,6 +14,7 @@
       <div class="meta-wrapper">
           <span>Remix by <a href="mailto:{{ remix.email }}">{{ remix.fullname }}</a></span>
           <span>{{ remix.date }}</span>
+          <span class="remix-delete" data-id="{% autoescape false %}{{ remix._id }}{% endautoescape %}"><i class="fa fa-trash-o"></i></span>
       </div>
     </div>
     {% endfor %}
