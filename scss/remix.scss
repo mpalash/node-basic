@@ -64,7 +64,7 @@ $tool-background: #ccc;
 
   .tools {
     position: absolute;
-    top: 200px;
+    top: calc(50vh - 270px);
     left: 0;
     transform-origin: top left;
     // transform: scale(1.25);
